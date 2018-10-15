@@ -7,15 +7,32 @@
 //
 
 import UIKit
+import KYDrawerController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    var drawerController = KYDrawerController.init(drawerDirection: .left, drawerWidth: UIScreen.main.bounds.width/1.5)
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UINavigationBar.appearance().barTintColor = ColorConstants.primaryColor
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let mainVC = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+        let drawerVC = storyboard.instantiateViewController(withIdentifier: "NavigationDrawerViewController")
+        
+        self.drawerController.mainViewController = UINavigationController(rootViewController: mainVC)
+        self.drawerController.drawerViewController = drawerVC
+        
+        self.window?.rootViewController = self.drawerController
+        self.window?.makeKeyAndVisible()
+        
+        
         return true
     }
 

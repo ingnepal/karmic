@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042BA31B214779A70020F4EC /* HTTPConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042BA31A214779A70020F4EC /* HTTPConstants.swift */; };
+		0441D5EE2159FB7000E5D853 /* HoroscopeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0441D5ED2159FB7000E5D853 /* HoroscopeViewController.swift */; };
+		0441D5F02159FB8500E5D853 /* HoroscopeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0441D5EF2159FB8500E5D853 /* HoroscopeTableViewCell.swift */; };
 		045390182140DB9200869073 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045390172140DB9200869073 /* AppDelegate.swift */; };
 		0453901A2140DB9200869073 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045390192140DB9200869073 /* ViewController.swift */; };
 		0453901D2140DB9200869073 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0453901B2140DB9200869073 /* Main.storyboard */; };
@@ -14,6 +17,59 @@
 		045390222140DB9300869073 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045390202140DB9300869073 /* LaunchScreen.storyboard */; };
 		0453902D2140DB9300869073 /* MoonSignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453902C2140DB9300869073 /* MoonSignTests.swift */; };
 		045390382140DB9300869073 /* MoonSignUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045390372140DB9300869073 /* MoonSignUITests.swift */; };
+		0453904F2141081D00869073 /* NavigationDrawerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453904E2141081D00869073 /* NavigationDrawerTableViewCell.swift */; };
+		045390512141083C00869073 /* NavigationDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045390502141083C00869073 /* NavigationDrawerViewController.swift */; };
+		04539053214111F000869073 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04539052214111F000869073 /* MainViewController.swift */; };
+		0475C38C2157415200751154 /* SaveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C38B2157415200751154 /* SaveData.swift */; };
+		0475C38F2157452B00751154 /* CreateCustomerRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C38E2157452B00751154 /* CreateCustomerRoot.swift */; };
+		0475C3912157454200751154 /* CreateCustomerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3902157454200751154 /* CreateCustomerMeta.swift */; };
+		0475C3932157454C00751154 /* CreateCustomerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3922157454C00751154 /* CreateCustomerData.swift */; };
+		0475C3952157455D00751154 /* CreateCustomerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3942157455D00751154 /* CreateCustomerDetail.swift */; };
+		0475C3972157456C00751154 /* CreateCustomerConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3962157456C00751154 /* CreateCustomerConversation.swift */; };
+		0475C3992157457700751154 /* CreateCustomerAnswers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3982157457700751154 /* CreateCustomerAnswers.swift */; };
+		0475C39C21574C9E00751154 /* UpdateCustomerMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C39B21574C9E00751154 /* UpdateCustomerMeta.swift */; };
+		0475C39E21574CA700751154 /* UpdateCustomerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C39D21574CA700751154 /* UpdateCustomerData.swift */; };
+		0475C3A021574CBE00751154 /* UpdateCustomerRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C39F21574CBE00751154 /* UpdateCustomerRoot.swift */; };
+		0475C3A32157531000751154 /* GetConversationRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3A22157531000751154 /* GetConversationRoot.swift */; };
+		0475C3A52157532500751154 /* GetConversationMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3A42157532500751154 /* GetConversationMeta.swift */; };
+		0475C3A72157533500751154 /* GetConversationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3A62157533500751154 /* GetConversationData.swift */; };
+		0475C3A92157534100751154 /* GetConversationAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3A82157534100751154 /* GetConversationAnswer.swift */; };
+		0475C3AB2157768F00751154 /* MessageTemplatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3AA2157768F00751154 /* MessageTemplatesTableViewCell.swift */; };
+		0475C3AD215776B900751154 /* MessageTemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3AC215776B900751154 /* MessageTemplatesViewController.swift */; };
+		0475C3B021577AF900751154 /* GetTemplateQuestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3AF21577AF900751154 /* GetTemplateQuestionList.swift */; };
+		0475C3B221577B0400751154 /* GetTemplateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3B121577B0400751154 /* GetTemplateData.swift */; };
+		0475C3B421577B1100751154 /* GetTemplateMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3B321577B1100751154 /* GetTemplateMeta.swift */; };
+		0475C3B621577B1B00751154 /* GetTemplateRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3B521577B1B00751154 /* GetTemplateRoot.swift */; };
+		0475C3B92157A33000751154 /* GetCustomerDetailsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3B82157A33000751154 /* GetCustomerDetailsData.swift */; };
+		0475C3BB2157A33B00751154 /* GetCustomerDetailsMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3BA2157A33B00751154 /* GetCustomerDetailsMeta.swift */; };
+		0475C3BD2157A34800751154 /* GetCustomerDetailsRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475C3BC2157A34800751154 /* GetCustomerDetailsRoot.swift */; };
+		048B037C215A00EF0013E52F /* GetHoroscopeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B037B215A00EF0013E52F /* GetHoroscopeData.swift */; };
+		048B037E215A01030013E52F /* GetHoroscopeMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B037D215A01030013E52F /* GetHoroscopeMeta.swift */; };
+		048B0380215A010E0013E52F /* GetHoroscopeRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B037F215A010E0013E52F /* GetHoroscopeRoot.swift */; };
+		048B0382215A08C50013E52F /* ThoughtOfDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B0381215A08C50013E52F /* ThoughtOfDayViewController.swift */; };
+		048B0385215A09CB0013E52F /* GetThoughtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B0384215A09CB0013E52F /* GetThoughtData.swift */; };
+		048B0387215A09D40013E52F /* GetThoughtMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B0386215A09D40013E52F /* GetThoughtMeta.swift */; };
+		048B0389215A09DD0013E52F /* GetThoughtRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B0388215A09DD0013E52F /* GetThoughtRoot.swift */; };
+		048B038B215A10AD0013E52F /* YogaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B038A215A10AD0013E52F /* YogaViewController.swift */; };
+		048B038D215A10C20013E52F /* YogaUTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B038C215A10C20013E52F /* YogaUTableViewCell.swift */; };
+		048B0390215A12E30013E52F /* GetYogaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B038F215A12E30013E52F /* GetYogaData.swift */; };
+		048B0392215A12ED0013E52F /* GetYogaMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B0391215A12ED0013E52F /* GetYogaMeta.swift */; };
+		048B0394215A12F60013E52F /* GetYogaRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B0393215A12F60013E52F /* GetYogaRoot.swift */; };
+		048B0396215A21D50013E52F /* CustomerSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B0395215A21D50013E52F /* CustomerSupportViewController.swift */; };
+		04A9D35E2144DE2600AD14B8 /* HowMoonSIgnWorksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9D35D2144DE2600AD14B8 /* HowMoonSIgnWorksViewController.swift */; };
+		04C35A6E2141398000B81905 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C35A6D2141398000B81905 /* ProfileViewController.swift */; };
+		04C8AD292145242200A3B5F6 /* HTTPRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8AD282145242200A3B5F6 /* HTTPRequests.swift */; };
+		04C8AD2B2145244C00A3B5F6 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8AD2A2145244C00A3B5F6 /* Utility.swift */; };
+		04C8AD2F214527AB00A3B5F6 /* AstrologersListRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8AD2E214527AB00A3B5F6 /* AstrologersListRoot.swift */; };
+		04C8AD31214527BB00A3B5F6 /* AstrologersListMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8AD30214527BB00A3B5F6 /* AstrologersListMeta.swift */; };
+		04C8AD33214527C900A3B5F6 /* AstrologersListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8AD32214527C900A3B5F6 /* AstrologersListData.swift */; };
+		04C8AD3621452B1B00A3B5F6 /* AstrologersListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8AD3521452B1B00A3B5F6 /* AstrologersListTableViewCell.swift */; };
+		04C8AD3821452B4E00A3B5F6 /* AstrologersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8AD3721452B4E00A3B5F6 /* AstrologersListViewController.swift */; };
+		04DB419F2165FD7B00A7A859 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB419E2165FD7B00A7A859 /* ColorConstants.swift */; };
+		04DB41A12166129600A7A859 /* DateTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB41A02166129600A7A859 /* DateTimePickerViewController.swift */; };
+		2D71A961C2ACE65425CB29A5 /* Pods_MoonSign.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072EC1D66018BF100A9D90DD /* Pods_MoonSign.framework */; };
+		6866862E8F78A0CE16908462 /* Pods_MoonSignTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166E0EDA3E04CCB518F2EE13 /* Pods_MoonSignTests.framework */; };
+		DE1BBA34ADCB62C298C8CA2E /* Pods_MoonSignUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B97ED4F399BAA825A1ECDD37 /* Pods_MoonSignUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +90,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		042BA31A214779A70020F4EC /* HTTPConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPConstants.swift; sourceTree = "<group>"; };
+		0441D5ED2159FB7000E5D853 /* HoroscopeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeViewController.swift; sourceTree = "<group>"; };
+		0441D5EF2159FB8500E5D853 /* HoroscopeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeTableViewCell.swift; sourceTree = "<group>"; };
 		045390142140DB9200869073 /* MoonSign.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoonSign.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045390172140DB9200869073 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		045390192140DB9200869073 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +106,65 @@
 		045390332140DB9300869073 /* MoonSignUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoonSignUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		045390372140DB9300869073 /* MoonSignUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonSignUITests.swift; sourceTree = "<group>"; };
 		045390392140DB9300869073 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0453904E2141081D00869073 /* NavigationDrawerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDrawerTableViewCell.swift; sourceTree = "<group>"; };
+		045390502141083C00869073 /* NavigationDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDrawerViewController.swift; sourceTree = "<group>"; };
+		04539052214111F000869073 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0475C38B2157415200751154 /* SaveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveData.swift; sourceTree = "<group>"; };
+		0475C38E2157452B00751154 /* CreateCustomerRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomerRoot.swift; sourceTree = "<group>"; };
+		0475C3902157454200751154 /* CreateCustomerMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomerMeta.swift; sourceTree = "<group>"; };
+		0475C3922157454C00751154 /* CreateCustomerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomerData.swift; sourceTree = "<group>"; };
+		0475C3942157455D00751154 /* CreateCustomerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomerDetail.swift; sourceTree = "<group>"; };
+		0475C3962157456C00751154 /* CreateCustomerConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomerConversation.swift; sourceTree = "<group>"; };
+		0475C3982157457700751154 /* CreateCustomerAnswers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomerAnswers.swift; sourceTree = "<group>"; };
+		0475C39B21574C9E00751154 /* UpdateCustomerMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCustomerMeta.swift; sourceTree = "<group>"; };
+		0475C39D21574CA700751154 /* UpdateCustomerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCustomerData.swift; sourceTree = "<group>"; };
+		0475C39F21574CBE00751154 /* UpdateCustomerRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCustomerRoot.swift; sourceTree = "<group>"; };
+		0475C3A22157531000751154 /* GetConversationRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetConversationRoot.swift; sourceTree = "<group>"; };
+		0475C3A42157532500751154 /* GetConversationMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetConversationMeta.swift; sourceTree = "<group>"; };
+		0475C3A62157533500751154 /* GetConversationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetConversationData.swift; sourceTree = "<group>"; };
+		0475C3A82157534100751154 /* GetConversationAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetConversationAnswer.swift; sourceTree = "<group>"; };
+		0475C3AA2157768F00751154 /* MessageTemplatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTemplatesTableViewCell.swift; sourceTree = "<group>"; };
+		0475C3AC215776B900751154 /* MessageTemplatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTemplatesViewController.swift; sourceTree = "<group>"; };
+		0475C3AF21577AF900751154 /* GetTemplateQuestionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTemplateQuestionList.swift; sourceTree = "<group>"; };
+		0475C3B121577B0400751154 /* GetTemplateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTemplateData.swift; sourceTree = "<group>"; };
+		0475C3B321577B1100751154 /* GetTemplateMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTemplateMeta.swift; sourceTree = "<group>"; };
+		0475C3B521577B1B00751154 /* GetTemplateRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTemplateRoot.swift; sourceTree = "<group>"; };
+		0475C3B82157A33000751154 /* GetCustomerDetailsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCustomerDetailsData.swift; sourceTree = "<group>"; };
+		0475C3BA2157A33B00751154 /* GetCustomerDetailsMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCustomerDetailsMeta.swift; sourceTree = "<group>"; };
+		0475C3BC2157A34800751154 /* GetCustomerDetailsRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCustomerDetailsRoot.swift; sourceTree = "<group>"; };
+		048B037B215A00EF0013E52F /* GetHoroscopeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHoroscopeData.swift; sourceTree = "<group>"; };
+		048B037D215A01030013E52F /* GetHoroscopeMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHoroscopeMeta.swift; sourceTree = "<group>"; };
+		048B037F215A010E0013E52F /* GetHoroscopeRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHoroscopeRoot.swift; sourceTree = "<group>"; };
+		048B0381215A08C50013E52F /* ThoughtOfDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtOfDayViewController.swift; sourceTree = "<group>"; };
+		048B0384215A09CB0013E52F /* GetThoughtData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetThoughtData.swift; sourceTree = "<group>"; };
+		048B0386215A09D40013E52F /* GetThoughtMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetThoughtMeta.swift; sourceTree = "<group>"; };
+		048B0388215A09DD0013E52F /* GetThoughtRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetThoughtRoot.swift; sourceTree = "<group>"; };
+		048B038A215A10AD0013E52F /* YogaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogaViewController.swift; sourceTree = "<group>"; };
+		048B038C215A10C20013E52F /* YogaUTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YogaUTableViewCell.swift; sourceTree = "<group>"; };
+		048B038F215A12E30013E52F /* GetYogaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetYogaData.swift; sourceTree = "<group>"; };
+		048B0391215A12ED0013E52F /* GetYogaMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetYogaMeta.swift; sourceTree = "<group>"; };
+		048B0393215A12F60013E52F /* GetYogaRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetYogaRoot.swift; sourceTree = "<group>"; };
+		048B0395215A21D50013E52F /* CustomerSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerSupportViewController.swift; sourceTree = "<group>"; };
+		04A9D35D2144DE2600AD14B8 /* HowMoonSIgnWorksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowMoonSIgnWorksViewController.swift; sourceTree = "<group>"; };
+		04C35A6D2141398000B81905 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		04C8AD282145242200A3B5F6 /* HTTPRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequests.swift; sourceTree = "<group>"; };
+		04C8AD2A2145244C00A3B5F6 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		04C8AD2E214527AB00A3B5F6 /* AstrologersListRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrologersListRoot.swift; sourceTree = "<group>"; };
+		04C8AD30214527BB00A3B5F6 /* AstrologersListMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrologersListMeta.swift; sourceTree = "<group>"; };
+		04C8AD32214527C900A3B5F6 /* AstrologersListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrologersListData.swift; sourceTree = "<group>"; };
+		04C8AD3521452B1B00A3B5F6 /* AstrologersListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrologersListTableViewCell.swift; sourceTree = "<group>"; };
+		04C8AD3721452B4E00A3B5F6 /* AstrologersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrologersListViewController.swift; sourceTree = "<group>"; };
+		04DB419E2165FD7B00A7A859 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
+		04DB41A02166129600A7A859 /* DateTimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePickerViewController.swift; sourceTree = "<group>"; };
+		072EC1D66018BF100A9D90DD /* Pods_MoonSign.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoonSign.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		166E0EDA3E04CCB518F2EE13 /* Pods_MoonSignTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoonSignTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6288A1A5846520557FEC7148 /* Pods-MoonSign.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoonSign.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoonSign/Pods-MoonSign.debug.xcconfig"; sourceTree = "<group>"; };
+		67ED43521D6CBE56AB700187 /* Pods-MoonSignUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoonSignUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoonSignUITests/Pods-MoonSignUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8279F55B598FFEA046CB5557 /* Pods-MoonSignUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoonSignUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoonSignUITests/Pods-MoonSignUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A83ADA4F9B74BF60B7070F90 /* Pods-MoonSign.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoonSign.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoonSign/Pods-MoonSign.release.xcconfig"; sourceTree = "<group>"; };
+		B90A529B60DB695F632FA744 /* Pods-MoonSignTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoonSignTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoonSignTests/Pods-MoonSignTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B97ED4F399BAA825A1ECDD37 /* Pods_MoonSignUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoonSignUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD4E39327DE4A6034ED22EDD /* Pods-MoonSignTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoonSignTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoonSignTests/Pods-MoonSignTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D71A961C2ACE65425CB29A5 /* Pods_MoonSign.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6866862E8F78A0CE16908462 /* Pods_MoonSignTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE1BBA34ADCB62C298C8CA2E /* Pods_MoonSignUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +202,8 @@
 				0453902B2140DB9300869073 /* MoonSignTests */,
 				045390362140DB9300869073 /* MoonSignUITests */,
 				045390152140DB9200869073 /* Products */,
+				21EEFA5243D78559FDF974BB /* Pods */,
+				835B058C7CB0E7B8BF8CFAED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +220,28 @@
 		045390162140DB9200869073 /* MoonSign */ = {
 			isa = PBXGroup;
 			children = (
+				0475C38A2157414300751154 /* Utilities */,
+				04C8AD3421452AFC00A3B5F6 /* TableViewCells */,
+				04C8AD2C2145277E00A3B5F6 /* Models */,
+				04C8AD2A2145244C00A3B5F6 /* Utility.swift */,
+				04C8AD282145242200A3B5F6 /* HTTPRequests.swift */,
 				045390172140DB9200869073 /* AppDelegate.swift */,
 				045390192140DB9200869073 /* ViewController.swift */,
 				0453901B2140DB9200869073 /* Main.storyboard */,
 				0453901E2140DB9300869073 /* Assets.xcassets */,
 				045390202140DB9300869073 /* LaunchScreen.storyboard */,
 				045390232140DB9300869073 /* Info.plist */,
+				045390502141083C00869073 /* NavigationDrawerViewController.swift */,
+				04539052214111F000869073 /* MainViewController.swift */,
+				04C35A6D2141398000B81905 /* ProfileViewController.swift */,
+				04A9D35D2144DE2600AD14B8 /* HowMoonSIgnWorksViewController.swift */,
+				04C8AD3721452B4E00A3B5F6 /* AstrologersListViewController.swift */,
+				0475C3AC215776B900751154 /* MessageTemplatesViewController.swift */,
+				0441D5ED2159FB7000E5D853 /* HoroscopeViewController.swift */,
+				048B0381215A08C50013E52F /* ThoughtOfDayViewController.swift */,
+				048B038A215A10AD0013E52F /* YogaViewController.swift */,
+				048B0395215A21D50013E52F /* CustomerSupportViewController.swift */,
+				04DB41A02166129600A7A859 /* DateTimePickerViewController.swift */,
 			);
 			path = MoonSign;
 			sourceTree = "<group>";
@@ -125,6 +264,162 @@
 			path = MoonSignUITests;
 			sourceTree = "<group>";
 		};
+		0475C38A2157414300751154 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				042BA31A214779A70020F4EC /* HTTPConstants.swift */,
+				0475C38B2157415200751154 /* SaveData.swift */,
+				04DB419E2165FD7B00A7A859 /* ColorConstants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		0475C38D2157451A00751154 /* CreateCustomer */ = {
+			isa = PBXGroup;
+			children = (
+				0475C38E2157452B00751154 /* CreateCustomerRoot.swift */,
+				0475C3902157454200751154 /* CreateCustomerMeta.swift */,
+				0475C3922157454C00751154 /* CreateCustomerData.swift */,
+				0475C3942157455D00751154 /* CreateCustomerDetail.swift */,
+				0475C3962157456C00751154 /* CreateCustomerConversation.swift */,
+				0475C3982157457700751154 /* CreateCustomerAnswers.swift */,
+			);
+			path = CreateCustomer;
+			sourceTree = "<group>";
+		};
+		0475C39A21574C9100751154 /* UpdateCustomer */ = {
+			isa = PBXGroup;
+			children = (
+				0475C39B21574C9E00751154 /* UpdateCustomerMeta.swift */,
+				0475C39D21574CA700751154 /* UpdateCustomerData.swift */,
+				0475C39F21574CBE00751154 /* UpdateCustomerRoot.swift */,
+			);
+			path = UpdateCustomer;
+			sourceTree = "<group>";
+		};
+		0475C3A1215752FD00751154 /* GetConversation */ = {
+			isa = PBXGroup;
+			children = (
+				0475C3A22157531000751154 /* GetConversationRoot.swift */,
+				0475C3A42157532500751154 /* GetConversationMeta.swift */,
+				0475C3A62157533500751154 /* GetConversationData.swift */,
+				0475C3A82157534100751154 /* GetConversationAnswer.swift */,
+			);
+			path = GetConversation;
+			sourceTree = "<group>";
+		};
+		0475C3AE21577AE900751154 /* GetTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				0475C3AF21577AF900751154 /* GetTemplateQuestionList.swift */,
+				0475C3B121577B0400751154 /* GetTemplateData.swift */,
+				0475C3B321577B1100751154 /* GetTemplateMeta.swift */,
+				0475C3B521577B1B00751154 /* GetTemplateRoot.swift */,
+			);
+			path = GetTemplate;
+			sourceTree = "<group>";
+		};
+		0475C3B72157A31D00751154 /* GetCustomerDetails */ = {
+			isa = PBXGroup;
+			children = (
+				0475C3B82157A33000751154 /* GetCustomerDetailsData.swift */,
+				0475C3BA2157A33B00751154 /* GetCustomerDetailsMeta.swift */,
+				0475C3BC2157A34800751154 /* GetCustomerDetailsRoot.swift */,
+			);
+			path = GetCustomerDetails;
+			sourceTree = "<group>";
+		};
+		048B037A2159FDD70013E52F /* GetHoroscopes */ = {
+			isa = PBXGroup;
+			children = (
+				048B037B215A00EF0013E52F /* GetHoroscopeData.swift */,
+				048B037D215A01030013E52F /* GetHoroscopeMeta.swift */,
+				048B037F215A010E0013E52F /* GetHoroscopeRoot.swift */,
+			);
+			path = GetHoroscopes;
+			sourceTree = "<group>";
+		};
+		048B0383215A09B70013E52F /* GetThoughtOfDay */ = {
+			isa = PBXGroup;
+			children = (
+				048B0384215A09CB0013E52F /* GetThoughtData.swift */,
+				048B0386215A09D40013E52F /* GetThoughtMeta.swift */,
+				048B0388215A09DD0013E52F /* GetThoughtRoot.swift */,
+			);
+			path = GetThoughtOfDay;
+			sourceTree = "<group>";
+		};
+		048B038E215A12C20013E52F /* GetYoga */ = {
+			isa = PBXGroup;
+			children = (
+				048B038F215A12E30013E52F /* GetYogaData.swift */,
+				048B0391215A12ED0013E52F /* GetYogaMeta.swift */,
+				048B0393215A12F60013E52F /* GetYogaRoot.swift */,
+			);
+			path = GetYoga;
+			sourceTree = "<group>";
+		};
+		04C8AD2C2145277E00A3B5F6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				048B038E215A12C20013E52F /* GetYoga */,
+				048B0383215A09B70013E52F /* GetThoughtOfDay */,
+				048B037A2159FDD70013E52F /* GetHoroscopes */,
+				0475C3B72157A31D00751154 /* GetCustomerDetails */,
+				0475C3AE21577AE900751154 /* GetTemplate */,
+				0475C3A1215752FD00751154 /* GetConversation */,
+				0475C39A21574C9100751154 /* UpdateCustomer */,
+				0475C38D2157451A00751154 /* CreateCustomer */,
+				04C8AD2D2145278500A3B5F6 /* AstrologersList */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		04C8AD2D2145278500A3B5F6 /* AstrologersList */ = {
+			isa = PBXGroup;
+			children = (
+				04C8AD2E214527AB00A3B5F6 /* AstrologersListRoot.swift */,
+				04C8AD30214527BB00A3B5F6 /* AstrologersListMeta.swift */,
+				04C8AD32214527C900A3B5F6 /* AstrologersListData.swift */,
+			);
+			path = AstrologersList;
+			sourceTree = "<group>";
+		};
+		04C8AD3421452AFC00A3B5F6 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				0453904E2141081D00869073 /* NavigationDrawerTableViewCell.swift */,
+				04C8AD3521452B1B00A3B5F6 /* AstrologersListTableViewCell.swift */,
+				0475C3AA2157768F00751154 /* MessageTemplatesTableViewCell.swift */,
+				0441D5EF2159FB8500E5D853 /* HoroscopeTableViewCell.swift */,
+				048B038C215A10C20013E52F /* YogaUTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		21EEFA5243D78559FDF974BB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6288A1A5846520557FEC7148 /* Pods-MoonSign.debug.xcconfig */,
+				A83ADA4F9B74BF60B7070F90 /* Pods-MoonSign.release.xcconfig */,
+				B90A529B60DB695F632FA744 /* Pods-MoonSignTests.debug.xcconfig */,
+				DD4E39327DE4A6034ED22EDD /* Pods-MoonSignTests.release.xcconfig */,
+				8279F55B598FFEA046CB5557 /* Pods-MoonSignUITests.debug.xcconfig */,
+				67ED43521D6CBE56AB700187 /* Pods-MoonSignUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		835B058C7CB0E7B8BF8CFAED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				072EC1D66018BF100A9D90DD /* Pods_MoonSign.framework */,
+				166E0EDA3E04CCB518F2EE13 /* Pods_MoonSignTests.framework */,
+				B97ED4F399BAA825A1ECDD37 /* Pods_MoonSignUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +427,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0453903C2140DB9300869073 /* Build configuration list for PBXNativeTarget "MoonSign" */;
 			buildPhases = (
+				9CC44386FA4AD1A9A6F1E923 /* [CP] Check Pods Manifest.lock */,
 				045390102140DB9200869073 /* Sources */,
 				045390112140DB9200869073 /* Frameworks */,
 				045390122140DB9200869073 /* Resources */,
+				E88054F5B34078F710D112B4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +446,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0453903F2140DB9300869073 /* Build configuration list for PBXNativeTarget "MoonSignTests" */;
 			buildPhases = (
+				651335DC439F820C3D516853 /* [CP] Check Pods Manifest.lock */,
 				045390242140DB9300869073 /* Sources */,
 				045390252140DB9300869073 /* Frameworks */,
 				045390262140DB9300869073 /* Resources */,
@@ -167,6 +465,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 045390422140DB9300869073 /* Build configuration list for PBXNativeTarget "MoonSignUITests" */;
 			buildPhases = (
+				CE308461BE45333D30F39960 /* [CP] Check Pods Manifest.lock */,
 				0453902F2140DB9300869073 /* Sources */,
 				045390302140DB9300869073 /* Frameworks */,
 				045390312140DB9300869073 /* Resources */,
@@ -251,13 +550,155 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		651335DC439F820C3D516853 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MoonSignTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CC44386FA4AD1A9A6F1E923 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MoonSign-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE308461BE45333D30F39960 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MoonSignUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E88054F5B34078F710D112B4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MoonSign/Pods-MoonSign-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/KYDrawerController/KYDrawerController.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KYDrawerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MoonSign/Pods-MoonSign-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		045390102140DB9200869073 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0475C38F2157452B00751154 /* CreateCustomerRoot.swift in Sources */,
+				0475C3A72157533500751154 /* GetConversationData.swift in Sources */,
+				048B038B215A10AD0013E52F /* YogaViewController.swift in Sources */,
+				04C35A6E2141398000B81905 /* ProfileViewController.swift in Sources */,
+				0441D5EE2159FB7000E5D853 /* HoroscopeViewController.swift in Sources */,
+				0441D5F02159FB8500E5D853 /* HoroscopeTableViewCell.swift in Sources */,
+				0475C3B221577B0400751154 /* GetTemplateData.swift in Sources */,
+				0475C3BB2157A33B00751154 /* GetCustomerDetailsMeta.swift in Sources */,
+				048B0389215A09DD0013E52F /* GetThoughtRoot.swift in Sources */,
+				0475C39E21574CA700751154 /* UpdateCustomerData.swift in Sources */,
+				048B0382215A08C50013E52F /* ThoughtOfDayViewController.swift in Sources */,
+				0475C3912157454200751154 /* CreateCustomerMeta.swift in Sources */,
+				04C8AD292145242200A3B5F6 /* HTTPRequests.swift in Sources */,
+				0475C3AD215776B900751154 /* MessageTemplatesViewController.swift in Sources */,
+				0475C38C2157415200751154 /* SaveData.swift in Sources */,
+				048B0396215A21D50013E52F /* CustomerSupportViewController.swift in Sources */,
+				0475C3B021577AF900751154 /* GetTemplateQuestionList.swift in Sources */,
+				0475C3AB2157768F00751154 /* MessageTemplatesTableViewCell.swift in Sources */,
+				04C8AD31214527BB00A3B5F6 /* AstrologersListMeta.swift in Sources */,
+				0475C3BD2157A34800751154 /* GetCustomerDetailsRoot.swift in Sources */,
+				048B037E215A01030013E52F /* GetHoroscopeMeta.swift in Sources */,
+				048B0385215A09CB0013E52F /* GetThoughtData.swift in Sources */,
+				0475C3A021574CBE00751154 /* UpdateCustomerRoot.swift in Sources */,
+				04C8AD2B2145244C00A3B5F6 /* Utility.swift in Sources */,
+				04A9D35E2144DE2600AD14B8 /* HowMoonSIgnWorksViewController.swift in Sources */,
+				0453904F2141081D00869073 /* NavigationDrawerTableViewCell.swift in Sources */,
+				0475C39C21574C9E00751154 /* UpdateCustomerMeta.swift in Sources */,
+				0475C3B92157A33000751154 /* GetCustomerDetailsData.swift in Sources */,
+				0475C3B421577B1100751154 /* GetTemplateMeta.swift in Sources */,
+				0475C3B621577B1B00751154 /* GetTemplateRoot.swift in Sources */,
+				042BA31B214779A70020F4EC /* HTTPConstants.swift in Sources */,
+				0475C3A52157532500751154 /* GetConversationMeta.swift in Sources */,
 				0453901A2140DB9200869073 /* ViewController.swift in Sources */,
 				045390182140DB9200869073 /* AppDelegate.swift in Sources */,
+				0475C3932157454C00751154 /* CreateCustomerData.swift in Sources */,
+				04C8AD3621452B1B00A3B5F6 /* AstrologersListTableViewCell.swift in Sources */,
+				0475C3952157455D00751154 /* CreateCustomerDetail.swift in Sources */,
+				0475C3A92157534100751154 /* GetConversationAnswer.swift in Sources */,
+				048B0387215A09D40013E52F /* GetThoughtMeta.swift in Sources */,
+				048B037C215A00EF0013E52F /* GetHoroscopeData.swift in Sources */,
+				0475C3992157457700751154 /* CreateCustomerAnswers.swift in Sources */,
+				048B0394215A12F60013E52F /* GetYogaRoot.swift in Sources */,
+				04C8AD2F214527AB00A3B5F6 /* AstrologersListRoot.swift in Sources */,
+				0475C3972157456C00751154 /* CreateCustomerConversation.swift in Sources */,
+				048B0380215A010E0013E52F /* GetHoroscopeRoot.swift in Sources */,
+				04C8AD3821452B4E00A3B5F6 /* AstrologersListViewController.swift in Sources */,
+				045390512141083C00869073 /* NavigationDrawerViewController.swift in Sources */,
+				0475C3A32157531000751154 /* GetConversationRoot.swift in Sources */,
+				048B0392215A12ED0013E52F /* GetYogaMeta.swift in Sources */,
+				04DB41A12166129600A7A859 /* DateTimePickerViewController.swift in Sources */,
+				048B0390215A12E30013E52F /* GetYogaData.swift in Sources */,
+				04539053214111F000869073 /* MainViewController.swift in Sources */,
+				04DB419F2165FD7B00A7A859 /* ColorConstants.swift in Sources */,
+				04C8AD33214527C900A3B5F6 /* AstrologersListData.swift in Sources */,
+				048B038D215A10C20013E52F /* YogaUTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,15 +869,17 @@
 		};
 		0453903D2140DB9300869073 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6288A1A5846520557FEC7148 /* Pods-MoonSign.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TP5KH53B4G;
 				INFOPLIST_FILE = MoonSign/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = np.com.blackspring.MoonSign;
+				PRODUCT_BUNDLE_IDENTIFIER = np.com.blackspring.moonshine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -445,15 +888,17 @@
 		};
 		0453903E2140DB9300869073 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A83ADA4F9B74BF60B7070F90 /* Pods-MoonSign.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TP5KH53B4G;
 				INFOPLIST_FILE = MoonSign/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = np.com.blackspring.MoonSign;
+				PRODUCT_BUNDLE_IDENTIFIER = np.com.blackspring.moonshine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -462,6 +907,7 @@
 		};
 		045390402140DB9300869073 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B90A529B60DB695F632FA744 /* Pods-MoonSignTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -482,6 +928,7 @@
 		};
 		045390412140DB9300869073 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD4E39327DE4A6034ED22EDD /* Pods-MoonSignTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -502,6 +949,7 @@
 		};
 		045390432140DB9300869073 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8279F55B598FFEA046CB5557 /* Pods-MoonSignUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -521,6 +969,7 @@
 		};
 		045390442140DB9300869073 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67ED43521D6CBE56AB700187 /* Pods-MoonSignUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
