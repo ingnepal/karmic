@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Alamofire
+import AlamofireImage
 class AstrologersListViewController: UIViewController {
     var astrolgersData = [[String:String]]()
     
@@ -75,7 +76,7 @@ extension AstrologersListViewController: UITableViewDataSource,UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AstrologersListTableViewCell", for: indexPath) as! AstrologersListTableViewCell
         let data = self.astrolgersData[indexPath.row]
-        cell.titleImage.image = #imageLiteral(resourceName: "profiledefault")
+        cell.titleImage.af_setImage(withURL: URL(string: data["imageUrl"]!)!)
         cell.title.text = data["username"]
         cell.subtitle.text = data["qualification"]
         return cell

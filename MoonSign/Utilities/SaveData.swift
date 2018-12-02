@@ -11,6 +11,11 @@ import Foundation
 class SaveData{
     static let loggedIn = "IS_LOGGED_IN"
     static let customerID = "CUSTOMER_ID"
+    static let welcomeMessage = "WELCOME_MESSAGE"
+    static let registeredStatus = "REGISTER_STATUS"
+    static let moderatorName = "MODERATOR_NAME"
+    static let moderatorImageURL = "MODERATOR_IMAGE_URL"
+    static let profileImageURL = "PROFILE_IMAGE_URL"
     
     static func isLoggedIn() -> Bool{
         let flag = UserDefaults.standard.bool(forKey: loggedIn)
@@ -28,5 +33,54 @@ class SaveData{
     
     static func setCustomerID(id: String){
         UserDefaults.standard.set(id, forKey: customerID)
+    }
+    
+    static func setWelcomeMessage(message: [String:String]){
+        UserDefaults.standard.set(message, forKey: welcomeMessage)
+    }
+    
+    static func getWelcomeMessage() -> [String:String]{
+       let message = UserDefaults.standard.dictionary(forKey: welcomeMessage)
+        
+        return message as! [String : String]
+    }
+    
+    static func isRegistered() -> Bool {
+      return  UserDefaults.standard.bool(forKey: registeredStatus)
+    }
+    
+    static func setRegisteredStatus(flag : Bool){
+        UserDefaults.standard.set(flag, forKey: registeredStatus)
+    }
+    
+    static func setModeratorName(name: String){
+        UserDefaults.standard.set(name, forKey: moderatorName)
+    }
+    static func getModeratorName() -> String{
+        return UserDefaults.standard.string(forKey: moderatorName) ?? "Moonsign"
+    }
+    
+    static func setModeratorImageURL(url: String){
+        UserDefaults.standard.set(URL(string: url), forKey: moderatorImageURL)
+    }
+    
+    static func getModeratorImageURL() -> URL {
+        guard let url = UserDefaults.standard.url(forKey: moderatorImageURL)
+            else{
+                    return  Utility.createLocalUrl(forImageNamed: "profiledefault")!
+                }
+        return url
+    }
+    
+    static func setProfileImageURL(url: String){
+        UserDefaults.standard.set(URL(string: url), forKey: profileImageURL)
+    }
+    
+    static func getProfileImageURL() -> URL {
+        guard let url = UserDefaults.standard.url(forKey: profileImageURL)
+            else{
+                return  Utility.createLocalUrl(forImageNamed: "profiledefault")!
+        }
+        return url
     }
 }

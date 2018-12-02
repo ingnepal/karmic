@@ -23,6 +23,7 @@ struct CreateCustomerDetail : Codable {
     let profileName : String?
     let repeatedDOB : Bool?
     let rightName : String?
+    let totalFreeQuestions : Int?
     let vedicSignId : String?
     
     enum CodingKeys: String, CodingKey {
@@ -39,6 +40,7 @@ struct CreateCustomerDetail : Codable {
         case profileName = "ProfileName"
         case repeatedDOB = "RepeatedDOB"
         case rightName = "RightName"
+        case totalFreeQuestions = "TotalFreeQuestions"
         case vedicSignId = "VedicSignId"
     }
     
@@ -57,6 +59,7 @@ struct CreateCustomerDetail : Codable {
         profileName = try values.decodeIfPresent(String.self, forKey: .profileName)
         repeatedDOB = try values.decodeIfPresent(Bool.self, forKey: .repeatedDOB)
         rightName = try values.decodeIfPresent(String.self, forKey: .rightName)
+        totalFreeQuestions = try values.decodeIfPresent(Int.self, forKey: .totalFreeQuestions)
         vedicSignId = try values.decodeIfPresent(String.self, forKey: .vedicSignId)
     }
     

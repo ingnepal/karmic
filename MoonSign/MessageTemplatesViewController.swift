@@ -29,14 +29,15 @@ class MessageTemplatesViewController: UIViewController,UITableViewDelegate,UITab
     
     var openedSections = [Int]()
     
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var mainTableView: UITableView!
     
     
-    @IBOutlet weak var cancelButton: UIButton!
-    
-    @IBAction func cancelClicked(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
+//    @IBOutlet weak var cancelButton: UIButton!
+//
+//    @IBAction func cancelClicked(_ sender: UIButton) {
+//        self.dismiss(animated: true, completion: nil)
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,9 +51,19 @@ class MessageTemplatesViewController: UIViewController,UITableViewDelegate,UITab
         mainTableView.tableHeaderView = UIView()
         mainTableView.tableFooterView = UIView()
         
-        self.cancelButton.backgroundColor = UIColor(red:0.31, green:0.06, blue:0.62, alpha:1.0)
+//        self.cancelButton.backgroundColor = UIColor(red:0.31, green:0.06, blue:0.62, alpha:1.0)
         
+//        self.cancelButton.backgroundColor = ColorConstants.accentColor
+        
+        self.view.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.2)
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        var touch: UITouch? = touches.first
+        if touch?.view != mainView {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.tableViewData.count
     }
@@ -78,12 +89,16 @@ class MessageTemplatesViewController: UIViewController,UITableViewDelegate,UITab
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MessageTemplatesTableViewCell", for: indexPath) as! MessageTemplatesTableViewCell
             cell.titleText.text = tableViewData[indexPath.section].title
+            cell.titleImage.image = UIImage(named: tableViewData[indexPath.section].title)
             cell.arrowText.image = UIImage(named: "ic_down-arrow")
+            cell.arrowText.image = cell.arrowText.image!.withRenderingMode(.alwaysTemplate)
+            cell.titleImage.image = cell.titleImage.image!.withRenderingMode(.alwaysTemplate)
             cell.arrowText.isHidden = false
             
             for sections in self.openedSections{
                 if indexPath.section == sections{
                     cell.arrowText.image = UIImage(named: "ic_up-arrow")
+                    cell.arrowText.image = cell.arrowText.image!.withRenderingMode(.alwaysTemplate)
                 }
             }
             return cell
@@ -91,6 +106,7 @@ class MessageTemplatesViewController: UIViewController,UITableViewDelegate,UITab
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "MessageTemplatesTableViewCell", for: indexPath) as! MessageTemplatesTableViewCell
             cell.titleText.text = tableViewData[indexPath.section].sectionData[dataIndex]
+            cell.titleImage.image = UIImage()
             cell.arrowText.isHidden = true
             return cell
         }
@@ -117,6 +133,7 @@ class MessageTemplatesViewController: UIViewController,UITableViewDelegate,UITab
             print(message)
             delegate?.getText(text: message)
             self.dismiss(animated: true, completion: nil)
+            NotificationCenter.default.post(name: .getTemplateNotification, object: message)
         }
     }
     

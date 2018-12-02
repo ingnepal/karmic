@@ -65,8 +65,12 @@
 		04C8AD33214527C900A3B5F6 /* AstrologersListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8AD32214527C900A3B5F6 /* AstrologersListData.swift */; };
 		04C8AD3621452B1B00A3B5F6 /* AstrologersListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8AD3521452B1B00A3B5F6 /* AstrologersListTableViewCell.swift */; };
 		04C8AD3821452B4E00A3B5F6 /* AstrologersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8AD3721452B4E00A3B5F6 /* AstrologersListViewController.swift */; };
+		04CEC5E721A11C0B00ADB1FC /* CreateCustomerModerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC5E621A11C0B00ADB1FC /* CreateCustomerModerator.swift */; };
+		04CEC5EA21A132B000ADB1FC /* WelcomeView1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC5E921A132B000ADB1FC /* WelcomeView1ViewController.swift */; };
+		04CEC5EC21A132E300ADB1FC /* WelcomeView2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC5EB21A132E300ADB1FC /* WelcomeView2ViewController.swift */; };
 		04DB419F2165FD7B00A7A859 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB419E2165FD7B00A7A859 /* ColorConstants.swift */; };
 		04DB41A12166129600A7A859 /* DateTimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB41A02166129600A7A859 /* DateTimePickerViewController.swift */; };
+		04E88F58219D332300A4CA20 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E88F57219D332200A4CA20 /* WelcomeViewController.swift */; };
 		2D71A961C2ACE65425CB29A5 /* Pods_MoonSign.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072EC1D66018BF100A9D90DD /* Pods_MoonSign.framework */; };
 		6866862E8F78A0CE16908462 /* Pods_MoonSignTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166E0EDA3E04CCB518F2EE13 /* Pods_MoonSignTests.framework */; };
 		DE1BBA34ADCB62C298C8CA2E /* Pods_MoonSignUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B97ED4F399BAA825A1ECDD37 /* Pods_MoonSignUITests.framework */; };
@@ -154,8 +158,12 @@
 		04C8AD32214527C900A3B5F6 /* AstrologersListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrologersListData.swift; sourceTree = "<group>"; };
 		04C8AD3521452B1B00A3B5F6 /* AstrologersListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrologersListTableViewCell.swift; sourceTree = "<group>"; };
 		04C8AD3721452B4E00A3B5F6 /* AstrologersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrologersListViewController.swift; sourceTree = "<group>"; };
+		04CEC5E621A11C0B00ADB1FC /* CreateCustomerModerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomerModerator.swift; sourceTree = "<group>"; };
+		04CEC5E921A132B000ADB1FC /* WelcomeView1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView1ViewController.swift; sourceTree = "<group>"; };
+		04CEC5EB21A132E300ADB1FC /* WelcomeView2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView2ViewController.swift; sourceTree = "<group>"; };
 		04DB419E2165FD7B00A7A859 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		04DB41A02166129600A7A859 /* DateTimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePickerViewController.swift; sourceTree = "<group>"; };
+		04E88F57219D332200A4CA20 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		072EC1D66018BF100A9D90DD /* Pods_MoonSign.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoonSign.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		166E0EDA3E04CCB518F2EE13 /* Pods_MoonSignTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoonSignTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6288A1A5846520557FEC7148 /* Pods-MoonSign.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoonSign.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoonSign/Pods-MoonSign.debug.xcconfig"; sourceTree = "<group>"; };
@@ -220,11 +228,10 @@
 		045390162140DB9200869073 /* MoonSign */ = {
 			isa = PBXGroup;
 			children = (
+				04CEC5E821A1328700ADB1FC /* WelcomeScreen */,
 				0475C38A2157414300751154 /* Utilities */,
 				04C8AD3421452AFC00A3B5F6 /* TableViewCells */,
 				04C8AD2C2145277E00A3B5F6 /* Models */,
-				04C8AD2A2145244C00A3B5F6 /* Utility.swift */,
-				04C8AD282145242200A3B5F6 /* HTTPRequests.swift */,
 				045390172140DB9200869073 /* AppDelegate.swift */,
 				045390192140DB9200869073 /* ViewController.swift */,
 				0453901B2140DB9200869073 /* Main.storyboard */,
@@ -267,6 +274,8 @@
 		0475C38A2157414300751154 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				04C8AD2A2145244C00A3B5F6 /* Utility.swift */,
+				04C8AD282145242200A3B5F6 /* HTTPRequests.swift */,
 				042BA31A214779A70020F4EC /* HTTPConstants.swift */,
 				0475C38B2157415200751154 /* SaveData.swift */,
 				04DB419E2165FD7B00A7A859 /* ColorConstants.swift */,
@@ -283,6 +292,7 @@
 				0475C3942157455D00751154 /* CreateCustomerDetail.swift */,
 				0475C3962157456C00751154 /* CreateCustomerConversation.swift */,
 				0475C3982157457700751154 /* CreateCustomerAnswers.swift */,
+				04CEC5E621A11C0B00ADB1FC /* CreateCustomerModerator.swift */,
 			);
 			path = CreateCustomer;
 			sourceTree = "<group>";
@@ -395,6 +405,16 @@
 				048B038C215A10C20013E52F /* YogaUTableViewCell.swift */,
 			);
 			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		04CEC5E821A1328700ADB1FC /* WelcomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				04E88F57219D332200A4CA20 /* WelcomeViewController.swift */,
+				04CEC5E921A132B000ADB1FC /* WelcomeView1ViewController.swift */,
+				04CEC5EB21A132E300ADB1FC /* WelcomeView2ViewController.swift */,
+			);
+			path = WelcomeScreen;
 			sourceTree = "<group>";
 		};
 		21EEFA5243D78559FDF974BB /* Pods */ = {
@@ -651,6 +671,7 @@
 				0441D5EE2159FB7000E5D853 /* HoroscopeViewController.swift in Sources */,
 				0441D5F02159FB8500E5D853 /* HoroscopeTableViewCell.swift in Sources */,
 				0475C3B221577B0400751154 /* GetTemplateData.swift in Sources */,
+				04CEC5E721A11C0B00ADB1FC /* CreateCustomerModerator.swift in Sources */,
 				0475C3BB2157A33B00751154 /* GetCustomerDetailsMeta.swift in Sources */,
 				048B0389215A09DD0013E52F /* GetThoughtRoot.swift in Sources */,
 				0475C39E21574CA700751154 /* UpdateCustomerData.swift in Sources */,
@@ -671,6 +692,7 @@
 				04A9D35E2144DE2600AD14B8 /* HowMoonSIgnWorksViewController.swift in Sources */,
 				0453904F2141081D00869073 /* NavigationDrawerTableViewCell.swift in Sources */,
 				0475C39C21574C9E00751154 /* UpdateCustomerMeta.swift in Sources */,
+				04CEC5EA21A132B000ADB1FC /* WelcomeView1ViewController.swift in Sources */,
 				0475C3B92157A33000751154 /* GetCustomerDetailsData.swift in Sources */,
 				0475C3B421577B1100751154 /* GetTemplateMeta.swift in Sources */,
 				0475C3B621577B1B00751154 /* GetTemplateRoot.swift in Sources */,
@@ -684,7 +706,9 @@
 				0475C3A92157534100751154 /* GetConversationAnswer.swift in Sources */,
 				048B0387215A09D40013E52F /* GetThoughtMeta.swift in Sources */,
 				048B037C215A00EF0013E52F /* GetHoroscopeData.swift in Sources */,
+				04CEC5EC21A132E300ADB1FC /* WelcomeView2ViewController.swift in Sources */,
 				0475C3992157457700751154 /* CreateCustomerAnswers.swift in Sources */,
+				04E88F58219D332300A4CA20 /* WelcomeViewController.swift in Sources */,
 				048B0394215A12F60013E52F /* GetYogaRoot.swift in Sources */,
 				04C8AD2F214527AB00A3B5F6 /* AstrologersListRoot.swift in Sources */,
 				0475C3972157456C00751154 /* CreateCustomerConversation.swift in Sources */,

@@ -10,7 +10,7 @@ import Foundation
 
 struct CreateCustomerData : Codable {
     
-    let conversation : CreateCustomerConversation?
+    let conversation : [CreateCustomerConversation]?
     let customerDetail : CreateCustomerDetail?
     
     enum CodingKeys: String, CodingKey {
@@ -20,8 +20,9 @@ struct CreateCustomerData : Codable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        conversation = try values.decodeIfPresent(CreateCustomerConversation.self, forKey: .conversation)
-        customerDetail =  try values.decodeIfPresent(CreateCustomerDetail.self, forKey: .customerDetail)
+        conversation = try values.decodeIfPresent([CreateCustomerConversation].self, forKey: .conversation)
+        customerDetail = try values.decodeIfPresent(CreateCustomerDetail.self, forKey: .customerDetail)
     }
+
     
 }

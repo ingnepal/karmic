@@ -15,7 +15,9 @@ struct CreateCustomerConversation : Codable {
     let customerDto : String?
     let customerId : Int?
     let id : Int?
+    let moderator : CreateCustomerModerator?
     let moderatorDataId : String?
+    let moderatorId : String?
     let questions : String?
     
     enum CodingKeys: String, CodingKey {
@@ -24,7 +26,9 @@ struct CreateCustomerConversation : Codable {
         case customerDto = "CustomerDto"
         case customerId = "CustomerId"
         case id = "Id"
+        case moderator = "Moderator"
         case moderatorDataId = "ModeratorDataId"
+        case moderatorId = "ModeratorId"
         case questions = "Questions"
     }
     
@@ -35,7 +39,9 @@ struct CreateCustomerConversation : Codable {
         customerDto = try values.decodeIfPresent(String.self, forKey: .customerDto)
         customerId = try values.decodeIfPresent(Int.self, forKey: .customerId)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
+        moderator = try values.decodeIfPresent(CreateCustomerModerator.self, forKey: .moderator)
         moderatorDataId = try values.decodeIfPresent(String.self, forKey: .moderatorDataId)
+        moderatorId = try values.decodeIfPresent(String.self, forKey: .moderatorId)
         questions = try values.decodeIfPresent(String.self, forKey: .questions)
     }
     

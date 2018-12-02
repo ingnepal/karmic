@@ -9,15 +9,22 @@
 import UIKit
 
 class NavigationDrawerViewController: UIViewController {
-    let titles = ["Thought of the day","Horoscope","Yoga","Astrologers","Customer Support", "How MoonSign works"]
+    let titles = ["Our Astrologers","Your Horoscope","How MoonSign works","Yoga","Thought of the day", "Customer Support","Terms and Conditions", "Privacy Policy"]
 //    let titleImages = [#imageLiteral(resourceName: "thought"),#imageLiteral(resourceName: "astrologers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "settings")]
-    let titleImages = [UIImage(named: "thought"),UIImage(named: "sun"),UIImage(named: "meditate"),UIImage(named: "astrologers"),UIImage(named: "support"),UIImage(named: "settings")]
+    let titleImages = [UIImage(named: "astrologers"),UIImage(named: "sun"),UIImage(named: "settings"),UIImage(named: "meditate"),UIImage(named: "thought"),UIImage(named: "ic_customer_support"),UIImage(named: "ic_terms"),UIImage(named: "settings")]
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var questionPriceText: UILabel!
+    @IBOutlet weak var questionPrice: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.mainTableView.tableFooterView = UIView()
+        
+        self.questionPriceText.backgroundColor = ColorConstants.accentColor
+        self.questionPriceText.textColor = UIColor.white
+        self.questionPrice.backgroundColor = ColorConstants.primaryColor
+        self.questionPrice.textColor = UIColor.white
         // Do any additional setup after loading the view.
     }
 
@@ -40,18 +47,44 @@ class NavigationDrawerViewController: UIViewController {
 }
 extension NavigationDrawerViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.titles.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 64
+        return 50
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NavigationDrawerTableViewCell", for: indexPath) as! NavigationDrawerTableViewCell
-        cell.titleLabel.text = self.titles[indexPath.row]
-        cell.titleImage.image = self.titleImages[indexPath.row]
+        cell.titleLabel.text = self.titles[indexPath.section]
+        cell.titleImage.image = self.titleImages[indexPath.section]
+        cell.titleImage.image = cell.titleImage.image!.withRenderingMode(.alwaysTemplate)
+        cell.titleImage.tintColor = ColorConstants.primaryColor
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        NotificationCenter.default.post(name: .navigation, object: indexPath.item)
+        NotificationCenter.default.post(name: .navigation, object: indexPath.section)
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        if (section == 3 || section == 5) {
+            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 10))
+            headerView.backgroundColor = UIColor.gray
+            return headerView
+        } else {
+            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 1))
+            headerView.backgroundColor = UIColor.clear
+             return headerView
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 3 || section == 5 {
+            return 2
+        }
+        else{
+            return 0
+        }
     }
 }

@@ -10,9 +10,9 @@ import UIKit
 import JSQMessagesViewController
 import Cosmos
 
-class ViewController: JSQMessagesViewController,GetTemplateText {
+class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecognizerDelegate {
     func getText(text: String) {
-//       self.sendQuestions(text: text)
+//      self.sendQuestions(text: text)
         self.inputToolbar.contentView.textView.text = text
         self.inputToolbar.toggleSendButtonEnabled()
     }
@@ -36,24 +36,31 @@ class ViewController: JSQMessagesViewController,GetTemplateText {
     var remedies = [String]()
     var others = [String]()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fetchTemplateMessages()
 //        Utility.ENABLE_IQKEYBOARD()
+        NotificationCenter.default.addObserver(self, selector: #selector(sendMessageNotification(notification:)), name: .messageSendNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(messageBubbleNotification), name: .messageBubbleNotification, object: nil)
+//        self.inputToolbar.contentView.leftBarButtonItem.setImage(UIImage(named: "speech-bubble"), for: .normal)
+//        self.inputToolbar.contentView.leftBarButtonItem.frame = CGRect(x: self.inputToolbar.contentView.leftBarButtonItem.frame.origin.x, y: self.inputToolbar.contentView.leftBarButtonItem.frame.origin.y, width: self.inputToolbar.contentView.leftBarButtonItem.frame.width, height: self.inputToolbar.contentView.leftBarButtonItem.frame.height)
         
-        self.inputToolbar.contentView.textView.placeHolder = "Send New Message"
+        self.inputToolbar.isHidden = true
         
         self.senderId = SaveData.getCustomerID()
         self.senderDisplayName = "Test"
         
         // Do any additional setup after loading the view, typically from a nib.
-        
-        incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
-        outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleGreen())
+//        incomingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage(named: "tailessMessageBubble")
+        incomingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage.jsq_bubbleCompactTailless(), capInsets: UIEdgeInsets.zero).incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+        outgoingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage.jsq_bubbleCompactTailless(), capInsets: UIEdgeInsets.zero).outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleGreen())
         
         self.senderAvatarImage = JSQMessagesAvatarImageFactory.avatarImage(with: #imageLiteral(resourceName: "profiledefault"), diameter: 30)
         self.receiverAvatarImage = JSQMessagesAvatarImageFactory.avatarImage(with: #imageLiteral(resourceName: "profiledefault"), diameter: 30)
+        JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: ColorConstants.primaryColor)
         
         self.collectionView.backgroundColor = UIColor.white
         
@@ -68,6 +75,9 @@ class ViewController: JSQMessagesViewController,GetTemplateText {
         else{
             
         }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+         self.inputToolbar.contentView.textView.placeHolder = "← Ideas what to ask"
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
@@ -103,39 +113,64 @@ class ViewController: JSQMessagesViewController,GetTemplateText {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
-        cell.cellBottomLabel.textColor = UIColor(red: 80.0/255.0, green: 15.0/255.0, blue: 159.0/255.0, alpha: 1.0)
-        cell.cellBottomLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
+        cell.cellBottomLabel.textColor = ColorConstants.primaryColor
+        cell.cellBottomLabel.font = cell.cellBottomLabel.font.withSize(25)
         
+        cell.cellTopLabel.textAlignment = .left
+        cell.cellTopLabel.font = cell.cellTopLabel.font.withSize(14)
+        
+        
+        let message = self.conversations[indexPath.row]
+        if message["qa"] == "a"{
+//            let webView = UIWebView(frame: CGRect(x: cell.textView.frame.origin.x, y: cell.textView.frame.origin.y, width: cell.messageBubbleContainerView.frame.width, height: cell.messageBubbleContainerView.frame.height))
+//            webView.isOpaque = false
+//            webView.backgroundColor = UIColor.clear
+//            webView.loadHTMLString(message["answer"]!, baseURL: nil)
+//            cell.messageBubbleContainerView.addSubview(webView)
+           cell.textView.text = message["answer"]?.htmlToString
+            cell.avatarImageView.af_setImage(withURL: SaveData.getModeratorImageURL())
+        }
+        else{
+            cell.avatarImageView.af_setImage(withURL: SaveData.getProfileImageURL())
+        }
 //        let message = self.conversations[indexPath.row]
 //        if message["qa"] == "a"{
 //            let tapGesture = UITapGestureRecognizer(target: self, action: messageTapped(i: indexPath.row) )
 //            cell.addGestureRecognizer(tapGesture)
 //        }
 //
+        let singleTapGestureRecognizer = IndexTapGesture(target: self, action: #selector(didSingleTapOnView))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.delegate = self
+        singleTapGestureRecognizer.indexPath = indexPath
+        cell.textView?.addGestureRecognizer(singleTapGestureRecognizer)
         return cell
     }
-   
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
+    
+    @objc func didSingleTapOnView(gesture: IndexTapGesture){
         print("message tapped")
+        let indexPath = gesture.indexPath!
+        print(indexPath.row)
         let message = self.conversations[indexPath.row]
         if message["qa"] == "a"{
+          var  id = message["id"] ?? "1"
             let alert = UIAlertController(title: "Rate Now", message: "Please select your rating star", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "★", style: .default, handler: { _ in
-                
+            alert.addAction(UIAlertAction(title: "★☆☆☆☆", style: .default, handler: { _ in
+                self.rateMessage(id: id, rating: "1")
             }))
             
-            alert.addAction(UIAlertAction(title: "★★", style: .default, handler: { _ in
-                
+            alert.addAction(UIAlertAction(title: "★★☆☆☆", style: .default, handler: { _ in
+                self.rateMessage(id: id, rating: "2")
             }))
-            alert.addAction(UIAlertAction(title: "★★★", style: .default, handler: { _ in
-                
+            alert.addAction(UIAlertAction(title: "★★★☆☆", style: .default, handler: { _ in
+                self.rateMessage(id: id, rating: "3")
             }))
             
-            alert.addAction(UIAlertAction(title: "★★★★", style: .default, handler: { _ in
-                
+            alert.addAction(UIAlertAction(title: "★★★★☆", style: .default, handler: { _ in
+                self.rateMessage(id: id, rating: "4")
             }))
             alert.addAction(UIAlertAction(title: "★★★★★", style: .default, handler: { _ in
-                
+                self.rateMessage(id: id, rating: "5")
             }))
             
             
@@ -150,7 +185,13 @@ class ViewController: JSQMessagesViewController,GetTemplateText {
             default:
                 break
             }
+            self.present(alert, animated: true, completion: nil)
         }
+    }
+   
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
+        
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -167,6 +208,25 @@ class ViewController: JSQMessagesViewController,GetTemplateText {
             return 0
         }
     }
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAt indexPath: IndexPath!) -> CGFloat {
+        let messages = self.conversations[indexPath.row]
+        
+        if messages["qa"] == "a"{
+            return 30
+        }
+        else{
+            return 0
+        }
+    }
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+        let message = self.conversations[indexPath.row]
+        if message["qa"] == "a"{
+             return NSAttributedString(string: SaveData.getModeratorName())
+        }
+        else{
+            return NSAttributedString(string: "")
+        }
+    }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAt indexPath: IndexPath!) -> NSAttributedString! {
         let message = self.conversations[indexPath.row]
@@ -178,19 +238,19 @@ class ViewController: JSQMessagesViewController,GetTemplateText {
 //            }
             switch r {
             case 0:
-                stars = ""
+                stars = "☆☆☆☆☆"
                 break
             case 1:
-                stars = "Rating: ★"
+                stars = "Rating: ★☆☆☆☆"
                 break
             case 2:
-                stars = "Rating: ★★"
+                stars = "Rating: ★★☆☆☆"
                 break
             case 3:
-                stars = "Rating: ★★★"
+                stars = "Rating: ★★★☆☆"
                 break
             case 4:
-                stars = "Rating: ★★★★"
+                stars = "Rating: ★★★★☆"
                 break
             case 5:
                 stars = "Rating: ★★★★★"
@@ -204,8 +264,41 @@ class ViewController: JSQMessagesViewController,GetTemplateText {
             return NSAttributedString(string: "")
         }
     }
-    func rateMessage(){
+    func rateMessage(id: String,rating: String){
+        let stringURL : String = HTTPConstants.baseURl + "/api/rating/rate"
+        let parameters = [
+            "Id":id as AnyObject,
+            "Rating":rating as AnyObject
+            ] as [String:AnyObject]
         
+        HTTPRequests.HTTPPostRequest(stringURL, parameters: parameters, withSuccess: ({ (responce, statusFlag) in
+            if statusFlag{
+                self.fetchChats()
+                //                self.messages.append(JSQMessage(senderId: SaveData.getCustomerID(), displayName: "Test", text: text))
+                //                self.collectionView.reloadData()
+            }
+        }))
+    }
+    
+    @objc func sendMessageNotification(notification: NSNotification){
+        notification.object as! String
+        finishSendingMessage()
+        self.sendQuestions(text: notification.object as! String)
+    }
+    @objc func messageBubbleNotification(){
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        let controller = storyboard.instantiateViewController(withIdentifier: "MessageTemplatesViewController") as! MessageTemplatesViewController
+        
+        controller.loveTitles = self.loveTitles
+        controller.career = self.career
+        controller.remedies = self.remedies
+        controller.others = self.others
+        
+        controller.delegate = self
+        
+        controller.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        controller.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        self.present(controller, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -224,6 +317,10 @@ class ViewController: JSQMessagesViewController,GetTemplateText {
                 do{
                     let root = try JSONDecoder().decode(GetConversationRoot.self, from: response!)
                     if root.meta?.status == "Ok"{
+                        self.conversation.updateValue(SaveData.getWelcomeMessage()["answerId"]!, forKey: "answerId")
+                        self.conversation.updateValue(SaveData.getWelcomeMessage()["answer"]!, forKey: "answer")
+                        self.conversation.updateValue(SaveData.getWelcomeMessage()["rating"]!, forKey: "rating")
+                        self.conversation.updateValue("a", forKey: "qa")
                         for datas in root.data!{
                             if datas.questions == nil{
                                 if datas.answer != nil{
@@ -339,5 +436,9 @@ class ViewController: JSQMessagesViewController,GetTemplateText {
     }
 
 
+}
+
+class IndexTapGesture: UITapGestureRecognizer {
+    var indexPath : IndexPath?
 }
 

@@ -10,6 +10,7 @@ import UIKit
 
 class MessageTemplatesTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleImage: UIImageView!
     @IBOutlet weak var arrowText: UIImageView!
     @IBOutlet weak var titleText: UILabel!
     

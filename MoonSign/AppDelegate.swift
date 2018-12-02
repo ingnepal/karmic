@@ -21,6 +21,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         
+        if SaveData.isLoggedIn(){
+            openDashboard()
+        }
+        else{
+            let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+            self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController")
+            self.window?.makeKeyAndVisible()
+        }
+        return true
+    }
+    
+    func openDashboard(){
         let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
         
         let mainVC = storyboard.instantiateViewController(withIdentifier: "MainViewController")
@@ -31,9 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.rootViewController = self.drawerController
         self.window?.makeKeyAndVisible()
-        
-        
-        return true
+    }
+    
+    class func globalDelegate() -> AppDelegate? {
+        return UIApplication.shared.delegate as? AppDelegate
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
