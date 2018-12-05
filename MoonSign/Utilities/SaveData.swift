@@ -16,7 +16,14 @@ class SaveData{
     static let moderatorName = "MODERATOR_NAME"
     static let moderatorImageURL = "MODERATOR_IMAGE_URL"
     static let profileImageURL = "PROFILE_IMAGE_URL"
+    static let DEVICE_TOKEN     = "device_token"
     
+    static func saveDeviceToken(_ deviceToken: String){
+        UserDefaults.standard.set(deviceToken, forKey: SaveData.DEVICE_TOKEN)
+    }
+    static func getDeviceToken()->String{
+        return UserDefaults.standard.string(forKey: SaveData.DEVICE_TOKEN) ?? ""
+    }
     static func isLoggedIn() -> Bool{
         let flag = UserDefaults.standard.bool(forKey: loggedIn)
         return flag

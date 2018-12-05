@@ -232,6 +232,7 @@ class MainViewController: UIViewController {
         }
         else{
              NotificationCenter.default.post(name: .messageSendNotification, object: self.messageText.text)
+            self.messageText.text = ""
         }
     }
     

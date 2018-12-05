@@ -68,7 +68,6 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
 //            self.messages.append(JSQMessage(senderId: "low", displayName: "Low", text: message))
 //        }
 //        self.collectionView.reloadData()
-        
         if SaveData.isLoggedIn(){
             self.fetchChats()
         }
@@ -310,17 +309,34 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         self.conversations.removeAll()
         self.messages.removeAll()
         self.conversation.removeAll()
+//        self.messages.append(JSQMessage(senderId: SaveData.getWelcomeMessage()["answerId"]!, displayName: SaveData.getModeratorName(), text: SaveData.getWelcomeMessage()["answer"]!))
         
-        let stringURL : String = HTTPConstants.baseURl + "/api/question/GetConvo/" + SaveData.getCustomerID()
+        self.conversation.updateValue(SaveData.getWelcomeMessage()["answerId"]!, forKey: "answerId")
+        self.conversation.updateValue(SaveData.getWelcomeMessage()["answer"]!, forKey: "answer")
+        self.conversation.updateValue(SaveData.getWelcomeMessage()["rating"]!, forKey: "rating")
+        self.conversation.updateValue("a", forKey: "qa")
+        self.conversations.append(conversation)
+        
+        setupCacheMessages()
+        
+        let stringURL : String = HTTPConstants.baseURl + "api/question/GetConvo/" + SaveData.getCustomerID()
         HTTPRequests.HTTPGetRequestData(stringURL, withSuccess: {(response,statusFlag) in
             if statusFlag{
                 do{
                     let root = try JSONDecoder().decode(GetConversationRoot.self, from: response!)
                     if root.meta?.status == "Ok"{
+                        self.conversations.removeAll()
+                        self.messages.removeAll()
+                        self.conversation.removeAll()
+                        
                         self.conversation.updateValue(SaveData.getWelcomeMessage()["answerId"]!, forKey: "answerId")
                         self.conversation.updateValue(SaveData.getWelcomeMessage()["answer"]!, forKey: "answer")
                         self.conversation.updateValue(SaveData.getWelcomeMessage()["rating"]!, forKey: "rating")
                         self.conversation.updateValue("a", forKey: "qa")
+                        let convData = ConversationData();
+                        convData.deleteAllRecords()
+                        self.conversations.append(self.conversation)
+                        convData.saveData(id: SaveData.getWelcomeMessage()["answerId"]!, name: SaveData.getModeratorName(), qa: "a", rating: SaveData.getWelcomeMessage()["rating"]!, message: SaveData.getWelcomeMessage()["answer"]!)
                         for datas in root.data!{
                             if datas.questions == nil{
                                 if datas.answer != nil{
@@ -328,7 +344,16 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
                                     self.conversation.updateValue(datas.answer?.answers! ?? "a", forKey: "answer")
                                     self.conversation.updateValue("\(datas.answer?.rating! ?? 0)", forKey: "rating")
                                     self.conversation.updateValue("a", forKey: "qa")
-                                    self.conversations.append(self.conversation)
+                                    if datas.answer?.answers! == SaveData.getWelcomeMessage()["answer"]!{
+                                        
+                                    }
+                                    else
+                                    {
+                                        convData.saveData(id: "\(datas.answer?.id! ?? 0)", name: SaveData.getModeratorName(), qa: "a", rating: "\(datas.answer?.rating! ?? 0)", message: datas.answer?.answers! ?? "a")
+                                        self.conversations.append(self.conversation)
+                                        self.conversation.removeAll()
+                                    }
+                                    
                                 }
                             }
                             else{
@@ -338,6 +363,9 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
                                 self.conversation.updateValue("\(datas.customerId!)", forKey: "customerId")
                                 self.conversation.updateValue(datas.moderatorDataId ?? "", forKey: "moderatorDataId")
                                 self.conversation.updateValue("q", forKey: "qa")
+                                
+                                convData.saveData(id: "\(datas.customerId!)", name: self.senderDisplayName, qa: "q", rating: "0", message: datas.questions!)
+                                
                                 self.conversations.append(self.conversation)
                                 
                                 if datas.answer != nil{
@@ -345,6 +373,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
                                     self.conversation.updateValue(datas.answer?.answers! ?? "a", forKey: "answer")
                                     self.conversation.updateValue("\(datas.answer?.rating! ?? 0)", forKey: "rating")
                                     self.conversation.updateValue("a", forKey: "qa")
+                                    convData.saveData(id: "\(datas.answer?.id! ?? 0)", name: SaveData.getModeratorName(), qa: "a", rating: "\(datas.answer?.rating! ?? 0)", message: datas.answer?.answers! ?? "a")
                                     self.conversations.append(self.conversation)
                                 }
                             }
@@ -364,7 +393,34 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
             }
         })
     }
-    
+    func setupCacheMessages(){
+        let convDatas = ConversationData()
+        self.conversation.removeAll()
+        self.conversations.removeAll()
+        self.messages.removeAll()
+        guard let datas = convDatas.getAllConversations() else {
+            return
+        }
+        print(datas.count)
+        for data in datas{
+            if data.qa! == "a"{
+                self.conversation.updateValue(data.id!, forKey: "answerId")
+                self.conversation.updateValue(data.message!, forKey: "answer")
+                self.conversation.updateValue(data.rating!, forKey: "rating")
+                self.conversation.updateValue(data.name!, forKey: "name")
+                self.conversation.updateValue("a", forKey: "qa")
+            }
+            else{
+                self.conversation.updateValue(data.id!, forKey: "customerId")
+                self.conversation.updateValue(data.message!, forKey: "questions")
+                self.conversation.updateValue(data.rating!, forKey: "rating")
+                self.conversation.updateValue(data.name!, forKey: "name")
+                self.conversation.updateValue("q", forKey: "qa")
+            }
+            self.conversations.append(conversation)
+        }
+         self.setUpMessages()
+    }
     func setUpMessages(){
         for conversations in self.conversations{
             if conversations["qa"] == "q"{

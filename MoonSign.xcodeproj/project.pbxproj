@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04162E9221B7B17800955653 /* MoonSign.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04162E9021B7B17800955653 /* MoonSign.xcdatamodeld */; };
+		04162E9521B7B26500955653 /* ConversationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04162E9421B7B26500955653 /* ConversationData.swift */; };
+		04162E9721B7DD4900955653 /* GetConversationModerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04162E9621B7DD4900955653 /* GetConversationModerator.swift */; };
+		04162E9921B7DD7700955653 /* GetConversationAstrologer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04162E9821B7DD7700955653 /* GetConversationAstrologer.swift */; };
 		042BA31B214779A70020F4EC /* HTTPConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042BA31A214779A70020F4EC /* HTTPConstants.swift */; };
 		0441D5EE2159FB7000E5D853 /* HoroscopeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0441D5ED2159FB7000E5D853 /* HoroscopeViewController.swift */; };
 		0441D5F02159FB8500E5D853 /* HoroscopeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0441D5EF2159FB8500E5D853 /* HoroscopeTableViewCell.swift */; };
@@ -94,6 +98,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04162E9121B7B17800955653 /* MoonSign.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoonSign.xcdatamodel; sourceTree = "<group>"; };
+		04162E9421B7B26500955653 /* ConversationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationData.swift; sourceTree = "<group>"; };
+		04162E9621B7DD4900955653 /* GetConversationModerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetConversationModerator.swift; sourceTree = "<group>"; };
+		04162E9821B7DD7700955653 /* GetConversationAstrologer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetConversationAstrologer.swift; sourceTree = "<group>"; };
 		042BA31A214779A70020F4EC /* HTTPConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPConstants.swift; sourceTree = "<group>"; };
 		0441D5ED2159FB7000E5D853 /* HoroscopeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeViewController.swift; sourceTree = "<group>"; };
 		0441D5EF2159FB8500E5D853 /* HoroscopeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeTableViewCell.swift; sourceTree = "<group>"; };
@@ -203,6 +211,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04162E9321B7B1E200955653 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				04162E9421B7B26500955653 /* ConversationData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		0453900B2140DB9200869073 = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +244,7 @@
 		045390162140DB9200869073 /* MoonSign */ = {
 			isa = PBXGroup;
 			children = (
+				04162E9321B7B1E200955653 /* Data */,
 				04CEC5E821A1328700ADB1FC /* WelcomeScreen */,
 				0475C38A2157414300751154 /* Utilities */,
 				04C8AD3421452AFC00A3B5F6 /* TableViewCells */,
@@ -249,6 +266,7 @@
 				048B038A215A10AD0013E52F /* YogaViewController.swift */,
 				048B0395215A21D50013E52F /* CustomerSupportViewController.swift */,
 				04DB41A02166129600A7A859 /* DateTimePickerViewController.swift */,
+				04162E9021B7B17800955653 /* MoonSign.xcdatamodeld */,
 			);
 			path = MoonSign;
 			sourceTree = "<group>";
@@ -314,6 +332,8 @@
 				0475C3A42157532500751154 /* GetConversationMeta.swift */,
 				0475C3A62157533500751154 /* GetConversationData.swift */,
 				0475C3A82157534100751154 /* GetConversationAnswer.swift */,
+				04162E9621B7DD4900955653 /* GetConversationModerator.swift */,
+				04162E9821B7DD7700955653 /* GetConversationAstrologer.swift */,
 			);
 			path = GetConversation;
 			sourceTree = "<group>";
@@ -677,6 +697,7 @@
 				0475C39E21574CA700751154 /* UpdateCustomerData.swift in Sources */,
 				048B0382215A08C50013E52F /* ThoughtOfDayViewController.swift in Sources */,
 				0475C3912157454200751154 /* CreateCustomerMeta.swift in Sources */,
+				04162E9721B7DD4900955653 /* GetConversationModerator.swift in Sources */,
 				04C8AD292145242200A3B5F6 /* HTTPRequests.swift in Sources */,
 				0475C3AD215776B900751154 /* MessageTemplatesViewController.swift in Sources */,
 				0475C38C2157415200751154 /* SaveData.swift in Sources */,
@@ -693,12 +714,14 @@
 				0453904F2141081D00869073 /* NavigationDrawerTableViewCell.swift in Sources */,
 				0475C39C21574C9E00751154 /* UpdateCustomerMeta.swift in Sources */,
 				04CEC5EA21A132B000ADB1FC /* WelcomeView1ViewController.swift in Sources */,
+				04162E9521B7B26500955653 /* ConversationData.swift in Sources */,
 				0475C3B92157A33000751154 /* GetCustomerDetailsData.swift in Sources */,
 				0475C3B421577B1100751154 /* GetTemplateMeta.swift in Sources */,
 				0475C3B621577B1B00751154 /* GetTemplateRoot.swift in Sources */,
 				042BA31B214779A70020F4EC /* HTTPConstants.swift in Sources */,
 				0475C3A52157532500751154 /* GetConversationMeta.swift in Sources */,
 				0453901A2140DB9200869073 /* ViewController.swift in Sources */,
+				04162E9221B7B17800955653 /* MoonSign.xcdatamodeld in Sources */,
 				045390182140DB9200869073 /* AppDelegate.swift in Sources */,
 				0475C3932157454C00751154 /* CreateCustomerData.swift in Sources */,
 				04C8AD3621452B1B00A3B5F6 /* AstrologersListTableViewCell.swift in Sources */,
@@ -718,6 +741,7 @@
 				0475C3A32157531000751154 /* GetConversationRoot.swift in Sources */,
 				048B0392215A12ED0013E52F /* GetYogaMeta.swift in Sources */,
 				04DB41A12166129600A7A859 /* DateTimePickerViewController.swift in Sources */,
+				04162E9921B7DD7700955653 /* GetConversationAstrologer.swift in Sources */,
 				048B0390215A12E30013E52F /* GetYogaData.swift in Sources */,
 				04539053214111F000869073 /* MainViewController.swift in Sources */,
 				04DB419F2165FD7B00A7A859 /* ColorConstants.swift in Sources */,
@@ -1051,6 +1075,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		04162E9021B7B17800955653 /* MoonSign.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				04162E9121B7B17800955653 /* MoonSign.xcdatamodel */,
+			);
+			currentVersion = 04162E9121B7B17800955653 /* MoonSign.xcdatamodel */;
+			path = MoonSign.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0453900C2140DB9200869073 /* Project object */;
 }
