@@ -57,7 +57,7 @@ class MainViewController: UIViewController {
         if SaveData.isLoggedIn() == false{
             SaveData.setRegisteredStatus(flag: false)
             self.fetchCustomer()
-            self.navigationItem.title = "Loading First time..."
+            self.navigationItem.title = "Updating First time..."
         }
         else{
             print("...........isLoggedIn............")
@@ -170,7 +170,7 @@ class MainViewController: UIViewController {
     }
     
     func fetchCustomer(){
-        Utility.ShowSVProgressHUD_White()
+//        Utility.ShowSVProgressHUD_White()
         if SaveData.isLoggedIn() == false{
             let stringURL:String = "https://app.moonsign.org/api/customers/CreateCustomer"
             var parameters:[String:AnyObject]?
@@ -201,7 +201,7 @@ class MainViewController: UIViewController {
                         controller.view.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height-70)
                         self.chatView.addSubview(controller.view)
                         controller.didMove(toParentViewController: self)
-                        Utility.DismissSVProgressHUD()
+//                        Utility.DismissSVProgressHUD()
                         self.navigationItem.title = "Moonsign"
                     }
                     catch let jsonerror{

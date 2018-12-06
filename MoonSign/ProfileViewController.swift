@@ -28,8 +28,8 @@ class ProfileViewController: UIViewController {
     
     var genderString = "Male"
     
-    var isTimeAccepted: Bool = false
-    var isTandCAccepted: Bool = false
+    var isTimeAccepted: Bool = true
+    var isTandCAccepted: Bool = true
     
     var imagePicker = UIImagePickerController()
     var selectedImage = UIImage()
@@ -43,6 +43,9 @@ class ProfileViewController: UIViewController {
         let tncTapGesture = UITapGestureRecognizer(target: self, action: #selector(tNcClicked(gesture:)))
         let timeTapGesture = UITapGestureRecognizer(target: self, action: #selector(acceptTimeClicked(gesture:)))
         
+        let tncTapGesture1 = UITapGestureRecognizer(target: self, action: #selector(tNcClicked(gesture:)))
+        let timeTapGesture1 = UITapGestureRecognizer(target: self, action: #selector(acceptTimeClicked(gesture:)))
+        
         let timeSelectTapGesture = UITapGestureRecognizer(target: self, action: #selector(timeOfBirthClicked(gesture:)))
         let dateSelectTapGesture = UITapGestureRecognizer(target: self, action: #selector(dateOfBirthClicked(gesture:)))
         
@@ -53,16 +56,16 @@ class ProfileViewController: UIViewController {
         
         self.acceptTnC.isUserInteractionEnabled = true
         self.acceptTime.isUserInteractionEnabled = true
-        self.acceptTime.image = UIImage(named: "ic_selected_no")
+        self.acceptTime.image = UIImage(named: "ic_selected_yes")
         
         self.timeIsAccurate.isUserInteractionEnabled = true
         self.tnC.isUserInteractionEnabled = true
         
-        self.acceptTnC.addGestureRecognizer(tncTapGesture)
+        self.acceptTnC.addGestureRecognizer(tncTapGesture1)
         self.tnC.addGestureRecognizer(tncTapGesture)
-        self.acceptTnC.image = UIImage(named: "ic_selected_no")
+        self.acceptTnC.image = UIImage(named: "ic_selected_yes")
         
-        self.acceptTime.addGestureRecognizer(timeTapGesture)
+        self.acceptTime.addGestureRecognizer(timeTapGesture1)
         self.timeIsAccurate.addGestureRecognizer(timeTapGesture)
         
         self.dobView.isUserInteractionEnabled = true
@@ -319,10 +322,15 @@ class ProfileViewController: UIViewController {
                     if root.meta?.status! ?? false == true{
                         self.fullName.text = root.data?.profileName ?? ""
                         self.genderString = root.data?.gender ?? ""
-                        self.dateOfBirth.text = root.data?.dOB ?? ""
+//                        self.dateOfBirth.text = root.data?.dOB ?? ""
                         self.country.text = root.data?.country ?? ""
                         self.cityAndState.text = root.data?.cityRegion ?? ""
                         self.profileImage.af_setImage(withURL: URL(string: (root.data?.imageUrl ?? "")) ?? URL(string: "user")!)
+                        let delimiter = "T"
+                    var dateTime = (root.data?.dOB ?? "").components(separatedBy: delimiter)
+                        print(dateTime[0])
+                        self.dateOfBirth.text = dateTime[0]
+                        self.timeOfBirth.text = dateTime[1]
                         SaveData.setProfileImageURL(url: root.data?.imageUrl ?? "")
                     }
                 }
@@ -361,6 +369,7 @@ class ProfileViewController: UIViewController {
                         self.dateOfBirth.text = rootData.data?.dOB
                         self.cityAndState.text = rootData.data?.cityRegion
                         self.country.text = rootData.data?.country
+                        
                         SaveData.setRegisteredStatus(flag: true)
                         
                         self.navigationController?.popViewController(animated: true)

@@ -142,7 +142,9 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         singleTapGestureRecognizer.numberOfTapsRequired = 1
         singleTapGestureRecognizer.delegate = self
         singleTapGestureRecognizer.indexPath = indexPath
-        cell.textView?.addGestureRecognizer(singleTapGestureRecognizer)
+        if indexPath.row != 0{
+            cell.textView?.addGestureRecognizer(singleTapGestureRecognizer)
+        }
         return cell
     }
     
@@ -328,7 +330,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
                         self.conversations.removeAll()
                         self.messages.removeAll()
                         self.conversation.removeAll()
-                        
+                        SaveData.setFreeQuestions(value: root.freeQuestions ?? 0)
                         self.conversation.updateValue(SaveData.getWelcomeMessage()["answerId"]!, forKey: "answerId")
                         self.conversation.updateValue(SaveData.getWelcomeMessage()["answer"]!, forKey: "answer")
                         self.conversation.updateValue(SaveData.getWelcomeMessage()["rating"]!, forKey: "rating")

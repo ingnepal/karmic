@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoonSign/MainViewController.swift"
-            timestampString = "565698180.354957"
+            timestampString = "565765281.54097"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoonSign/ViewController.swift"
-            timestampString = "565698180.355302"
+            timestampString = "565784647.471912"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "474"
-            endingLineNumber = "474"
+            startingLineNumber = "476"
+            endingLineNumber = "476"
             landmarkName = "fetchTemplateMessages()"
             landmarkType = "7">
          </BreakpointContent>

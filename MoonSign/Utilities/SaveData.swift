@@ -17,6 +17,7 @@ class SaveData{
     static let moderatorImageURL = "MODERATOR_IMAGE_URL"
     static let profileImageURL = "PROFILE_IMAGE_URL"
     static let DEVICE_TOKEN     = "device_token"
+    static let FREE_QUESTIONS = "free_questions"
     
     static func saveDeviceToken(_ deviceToken: String){
         UserDefaults.standard.set(deviceToken, forKey: SaveData.DEVICE_TOKEN)
@@ -89,5 +90,14 @@ class SaveData{
                 return  Utility.createLocalUrl(forImageNamed: "profiledefault")!
         }
         return url
+    }
+    
+    static func setFreeQuestions(value: Int){
+        UserDefaults.standard.set(value, forKey: SaveData.FREE_QUESTIONS)
+    }
+    static func getFreeQuestions() -> Int{
+        let num = UserDefaults.standard.integer(forKey: SaveData.FREE_QUESTIONS)
+        
+        return num
     }
 }

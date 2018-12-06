@@ -16,6 +16,8 @@ class NavigationDrawerViewController: UIViewController {
     @IBOutlet weak var questionPriceText: UILabel!
     @IBOutlet weak var questionPrice: UILabel!
     
+    @IBOutlet weak var freeQuestions: UILabel!
+    @IBOutlet weak var freeQuestionsText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,7 +27,15 @@ class NavigationDrawerViewController: UIViewController {
         self.questionPriceText.textColor = UIColor.white
         self.questionPrice.backgroundColor = ColorConstants.primaryColor
         self.questionPrice.textColor = UIColor.white
+        
+        self.freeQuestionsText.backgroundColor = ColorConstants.accentColor
+        self.freeQuestionsText.textColor = UIColor.white
+        
+        self.freeQuestions.backgroundColor = ColorConstants.primaryColor
+        self.freeQuestions.textColor = UIColor.white
         // Do any additional setup after loading the view.
+        
+        self.freeQuestions.text = "\(SaveData.getFreeQuestions())"
     }
 
     override func didReceiveMemoryWarning() {

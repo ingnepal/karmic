@@ -66,17 +66,28 @@ extension YogaViewController: UITableViewDelegate,UITableViewDataSource{
         return self.yogaDetails.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 267
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "YogaUTableViewCell", for: indexPath) as! YogaUTableViewCell
         
         let datas = self.yogaDetails[indexPath.row]
         
-        let imgURL = URL(string: datas["imageURL"]!)
+        
+        var finalURL = datas["imageURL"]?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let imgURL = URL(string: finalURL!)
         cell.titleImage.af_setImage(withURL: imgURL!)
         cell.titleText.text = datas["title"]
         cell.detailText.text = datas["detail"]
+        
+        cell.mainView.layer.shadowColor = UIColor.gray.cgColor
+        cell.mainView.layer.shadowOpacity = 1
+        cell.mainView.layer.shadowOffset = CGSize.zero
+        cell.mainView.layer.shadowRadius = 3
         
         return cell
     }
