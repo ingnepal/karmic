@@ -30,7 +30,7 @@ class AstrologersListViewController: UIViewController {
     
     func getAstrologerList(){
         
-        let stringURL: String = "https://app.moonsign.org/api/userlist/GetAstrologer"
+        let stringURL: String = HTTPConstants.baseURl +  "/api/userlist/GetAstrologer"
         HTTPRequests.HTTPGetRequestData(stringURL, withSuccess: {(response,statusFlag) in
             if statusFlag{
                 do{

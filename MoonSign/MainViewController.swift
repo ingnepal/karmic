@@ -172,7 +172,7 @@ class MainViewController: UIViewController {
     func fetchCustomer(){
 //        Utility.ShowSVProgressHUD_White()
         if SaveData.isLoggedIn() == false{
-            let stringURL:String = "https://app.moonsign.org/api/customers/CreateCustomer"
+            let stringURL:String =  HTTPConstants.baseURl + "/api/customers/CreateCustomer"
             var parameters:[String:AnyObject]?
             parameters = [
                 "DeviceToken": "sdsajdsji12" as AnyObject,
@@ -228,6 +228,11 @@ class MainViewController: UIViewController {
         else if SaveData.isRegistered() == false{
             let ac = UIAlertController(title: "Sorry", message: "You need to register in order to send message", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
+            ac.addAction(UIAlertAction(title: "Register Now", style: .default, handler: { (UIAlertAction) in
+                let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+                let controller = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
+                self.navigationController?.pushViewController(controller, animated: true)
+            }))
             self.present(ac, animated: true)
         }
         else{

@@ -41,6 +41,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Device token",SaveData.getDeviceToken())
         fetchTemplateMessages()
 //        Utility.ENABLE_IQKEYBOARD()
         NotificationCenter.default.addObserver(self, selector: #selector(sendMessageNotification(notification:)), name: .messageSendNotification, object: nil)

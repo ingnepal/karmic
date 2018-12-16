@@ -25,7 +25,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var dobView: UIView!
     @IBOutlet weak var tobView: UIView!
-    
+    let userDetails = UserDetailsData()
     var genderString = "Male"
     
     var isTimeAccepted: Bool = true
@@ -100,8 +100,36 @@ class ProfileViewController: UIViewController {
         self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
         self.profileImage.layer.masksToBounds = true
         
-        
-        getCustomerDetails()
+        if userDetails.getUserDetails()?.count ?? 0 > 0 {
+            updateUI()
+        }
+       // getCustomerDetails()
+    }
+    
+    fileprivate func updateUI(){
+        let profile = userDetails.getUserDetails()?[0]
+        self.fullName.text = profile?.fullName
+        if profile?.gender == "Male" {
+            femaleCheckBox.image = UIImage(named: "ic_selected_no")
+            maleCheckBox.image = UIImage(named: "ic_selected_yes")
+        }else{
+            maleCheckBox.image = UIImage(named: "ic_selected_no")
+            femaleCheckBox.image = UIImage(named: "ic_selected_yes")
+        }
+        var dateTime = (profile?.dateOfBirth ?? "").components(separatedBy: "T")
+
+        self.dateOfBirth.text = dateTime[0]
+        self.timeOfBirth.text = profile?.timeOfBirth
+        if profile?.isTimeAccurate == true{
+            acceptTime.image = UIImage(named: "ic_selected_yes")
+        }
+        else{
+            acceptTime.image = UIImage(named: "ic_selected_no")
+        }
+        self.country.text = profile?.country
+        self.cityAndState.text = profile?.cityAndState
+        acceptTnC.image = UIImage(named: "ic_selected_yes")
+        self.profileImage.af_setImage(withURL: URL(string: (profile?.photoUrl ?? "")) ?? URL(string: "user")!)
     }
     @objc func profileImageTapped(gesture:UITapGestureRecognizer){
         if (gesture.view as? UIImageView) != nil {
@@ -327,7 +355,7 @@ class ProfileViewController: UIViewController {
                         self.cityAndState.text = root.data?.cityRegion ?? ""
                         self.profileImage.af_setImage(withURL: URL(string: (root.data?.imageUrl ?? "")) ?? URL(string: "user")!)
                         let delimiter = "T"
-                    var dateTime = (root.data?.dOB ?? "").components(separatedBy: delimiter)
+                        var dateTime = (root.data?.dOB ?? "").components(separatedBy: delimiter)
                         print(dateTime[0])
                         self.dateOfBirth.text = dateTime[0]
                         self.timeOfBirth.text = dateTime[1]
@@ -369,13 +397,17 @@ class ProfileViewController: UIViewController {
                         self.dateOfBirth.text = rootData.data?.dOB
                         self.cityAndState.text = rootData.data?.cityRegion
                         self.country.text = rootData.data?.country
+                        self.userDetails.saveUserData(cityAndState: self.cityAndState.text!, country: self.country.text!, dob: self.dateOfBirth.text!, fullName: self.fullName.text!, gender: self.genderString, isTermsAgreed: self.isTandCAccepted, isTimeAccurate: self.isTimeAccepted, photoUrl: (rootData.data?.imageUrl) ?? "", timeOfBirth: self.timeOfBirth.text!)
                         
                         SaveData.setRegisteredStatus(flag: true)
                         
-                        self.navigationController?.popViewController(animated: true)
                         
                         let ac = UIAlertController(title: "Success", message: "Your details has been updated succesfully", preferredStyle: .alert)
-                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                        
+                        ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                            self.navigationController?.popViewController(animated: true)
+
+                        }))
                         self.present(ac, animated: true)
                         
                         
@@ -412,8 +444,8 @@ extension ProfileViewController:  UIImagePickerControllerDelegate, UINavigationC
          */
         if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage{
             
-            var imgData: NSData = NSData(data: UIImageJPEGRepresentation((editedImage), 1)!)
-            var imageSize: Int = imgData.length
+            let imgData: NSData = NSData(data: UIImageJPEGRepresentation((editedImage), 1)!)
+            let imageSize: Int = imgData.length
             print("size of image in KB: %f ", Double(imageSize) / 1024.0)
             if (Double(imageSize) / 1024.0 < 2048){
                 

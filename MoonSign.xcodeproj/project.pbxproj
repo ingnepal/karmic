@@ -77,6 +77,7 @@
 		04E88F58219D332300A4CA20 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E88F57219D332200A4CA20 /* WelcomeViewController.swift */; };
 		2D71A961C2ACE65425CB29A5 /* Pods_MoonSign.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072EC1D66018BF100A9D90DD /* Pods_MoonSign.framework */; };
 		6866862E8F78A0CE16908462 /* Pods_MoonSignTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 166E0EDA3E04CCB518F2EE13 /* Pods_MoonSignTests.framework */; };
+		B72C2B7021BB93C900C1910D /* UserDetailsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72C2B6F21BB93C900C1910D /* UserDetailsData.swift */; };
 		B7E70BB821B954F40053F877 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E70BB721B954F40053F877 /* StoreKit.framework */; };
 		DE1BBA34ADCB62C298C8CA2E /* Pods_MoonSignUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B97ED4F399BAA825A1ECDD37 /* Pods_MoonSignUITests.framework */; };
 /* End PBXBuildFile section */
@@ -179,6 +180,7 @@
 		67ED43521D6CBE56AB700187 /* Pods-MoonSignUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoonSignUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoonSignUITests/Pods-MoonSignUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8279F55B598FFEA046CB5557 /* Pods-MoonSignUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoonSignUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoonSignUITests/Pods-MoonSignUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A83ADA4F9B74BF60B7070F90 /* Pods-MoonSign.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoonSign.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoonSign/Pods-MoonSign.release.xcconfig"; sourceTree = "<group>"; };
+		B72C2B6F21BB93C900C1910D /* UserDetailsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsData.swift; sourceTree = "<group>"; };
 		B7E70BB621B9528F0053F877 /* MoonSign.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoonSign.entitlements; sourceTree = "<group>"; };
 		B7E70BB721B954F40053F877 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B90A529B60DB695F632FA744 /* Pods-MoonSignTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoonSignTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoonSignTests/Pods-MoonSignTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				04162E9421B7B26500955653 /* ConversationData.swift */,
+				B72C2B6F21BB93C900C1910D /* UserDetailsData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				0475C3912157454200751154 /* CreateCustomerMeta.swift in Sources */,
 				04162E9721B7DD4900955653 /* GetConversationModerator.swift in Sources */,
 				04C8AD292145242200A3B5F6 /* HTTPRequests.swift in Sources */,
+				B72C2B7021BB93C900C1910D /* UserDetailsData.swift in Sources */,
 				0475C3AD215776B900751154 /* MessageTemplatesViewController.swift in Sources */,
 				0475C38C2157415200751154 /* SaveData.swift in Sources */,
 				048B0396215A21D50013E52F /* CustomerSupportViewController.swift in Sources */,
