@@ -56,7 +56,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         
         // Do any additional setup after loading the view, typically from a nib.
 //        incomingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage(named: "tailessMessageBubble")
-        incomingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage.jsq_bubbleCompactTailless(), capInsets: UIEdgeInsets.zero).incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+        incomingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage.jsq_bubbleCompactTailless(), capInsets: UIEdgeInsets.zero).incomingMessagesBubbleImage(with: ColorConstants.primaryColor)
         outgoingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage.jsq_bubbleCompactTailless(), capInsets: UIEdgeInsets.zero).outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleGreen())
         
         self.senderAvatarImage = JSQMessagesAvatarImageFactory.avatarImage(with: #imageLiteral(resourceName: "profiledefault"), diameter: 30)
@@ -122,6 +122,12 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         
         let message = self.conversations[indexPath.row]
         if message["qa"] == "a"{
+            
+           
+           
+            
+        
+            
 //            let webView = UIWebView(frame: CGRect(x: cell.textView.frame.origin.x, y: cell.textView.frame.origin.y, width: cell.messageBubbleContainerView.frame.width, height: cell.messageBubbleContainerView.frame.height))
 //            webView.isOpaque = false
 //            webView.backgroundColor = UIColor.clear
@@ -129,6 +135,37 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
 //            cell.messageBubbleContainerView.addSubview(webView)
            cell.textView.text = message["answer"]?.htmlToString
             cell.avatarImageView.af_setImage(withURL: SaveData.getModeratorImageURL())
+            
+//            let ratingView = CosmosView(frame: CGRect(x: cell.cellBottomLabel.frame.origin.x, y: cell.cellBottomLabel.frame.origin.y, width: cell.cellBottomLabel.frame.width, height: cell.cellBottomLabel.frame.height))
+            
+            let ratingView = CosmosView(frame: CGRect(x: 8, y: cell.messageBubbleContainerView.frame.maxY + 30, width: cell.messageBubbleContainerView.frame.width, height: cell.cellBottomLabel.frame.height))
+            
+            let initialRating = Double(message["rating"] ?? "0.0")
+            ratingView.rating = initialRating ?? 1.0
+//            ratingView.settings.updateOnTouch = true
+            ratingView.settings.fillMode = .half
+            ratingView.didTouchCosmos = {rating in
+                print("\(rating)"+":\(indexPath.row)")
+                self.rateMessage(id: message["id"] ?? "1",rating: "\(rating)")
+            }
+            ratingView.didFinishTouchingCosmos = {rating in
+                print("\(rating)"+":\(indexPath.row)")
+                self.rateMessage(id: message["id"] ?? "1",rating: "\(rating)")
+            }
+            ratingView.settings.starSize = 30
+            if indexPath.row == 0{
+                
+            }
+            else{
+//                ratingView.removeFromSuperview()
+//                cell.contentView.addSubview(ratingView)
+//                cell.contentView.bringSubview(toFront: ratingView)
+                
+                cell.messageBubbleContainerView.addSubview(ratingView)
+                cell.messageBubbleContainerView.bringSubview(toFront: ratingView)
+                
+//                cell.bringSubview(toFront: cell.messageBubbleContainerView)
+            }
         }
         else{
             cell.avatarImageView.af_setImage(withURL: SaveData.getProfileImageURL())
@@ -146,9 +183,22 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         if indexPath.row != 0{
             cell.textView?.addGestureRecognizer(singleTapGestureRecognizer)
         }
+        
+        
         return cell
     }
+    private func didTouchCosmos(_ rating: Double) {
+//        self.ratingText.text = self.formatValue(rating)
+//        self.rating = self.formatValue(rating)
+        
+        print(rating)
+    }
     
+    private func didFinishTouchingCosmos(_ rating: Double) {
+//        self.ratingText.text = self.formatValue(rating)
+//        self.rating = self.formatValue(rating)
+        print(rating)
+    }
     @objc func didSingleTapOnView(gesture: IndexTapGesture){
         print("message tapped")
         let indexPath = gesture.indexPath!
@@ -500,4 +550,17 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
 class IndexTapGesture: UITapGestureRecognizer {
     var indexPath : IndexPath?
 }
+
+//class CustomJSQMEssageCell: JSQMessagesCollectionViewCell{
+//    let ratingView = CosmosView(frame: CGRect(x: 0, y: 0, width: cellBottomLabel.frame.width, height: cellBottomLabel.frame.height))
+//
+//    func update(_ rating: Double) {
+//
+//    }
+//
+//    override public func prepareForReuse() {
+//        // Ensures the reused cosmos view is as good as new
+//    }
+//}
+
 

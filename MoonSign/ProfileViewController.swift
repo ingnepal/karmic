@@ -25,6 +25,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var dobView: UIView!
     @IBOutlet weak var tobView: UIView!
+    @IBOutlet weak var emailText: UITextField!
+    
+    
     let userDetails = UserDetailsData()
     var genderString = "Male"
     
