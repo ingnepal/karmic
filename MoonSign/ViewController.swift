@@ -36,7 +36,8 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
     var remedies = [String]()
     var others = [String]()
     
-    
+    var isLastQuestion : Bool = true
+    var noOfAnswersAfterQuestions: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,7 +140,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
             
 //            let ratingView = CosmosView(frame: CGRect(x: cell.cellBottomLabel.frame.origin.x, y: cell.cellBottomLabel.frame.origin.y, width: cell.cellBottomLabel.frame.width, height: cell.cellBottomLabel.frame.height))
             
-             let ratingView = CosmosView(frame: CGRect(x: 0, y: 0, width: cell.cellBottomLabel.frame.width, height: cell.cellBottomLabel.frame.height))
+             let ratingView = CosmosView(frame: CGRect(x: 0, y: 10, width: cell.cellBottomLabel.frame.width, height: cell.cellBottomLabel.frame.height-10))
             
 //            let ratingView = CosmosView(frame: CGRect(x: 8, y: cell.messageBubbleContainerView.frame.maxY + 30, width: cell.messageBubbleContainerView.frame.width, height: cell.cellBottomLabel.frame.height))
             
@@ -149,7 +150,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
             ratingView.settings.fillMode = .half
             ratingView.didTouchCosmos = {rating in
                 print("\(rating)"+":\(indexPath.row)")
-                self.rateMessage(id: message["id"] ?? "1",rating: "\(rating)")
+//                self.rateMessage(id: message["id"] ?? "1",rating: "\(rating)")
             }
             ratingView.didFinishTouchingCosmos = {rating in
                 print("\(rating)"+":\(indexPath.row)")
@@ -252,6 +253,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(self.messages.count)
         return self.messages.count
     }
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellBottomLabelAt indexPath: IndexPath!) -> CGFloat {
@@ -263,7 +265,22 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
                 return 0
             }
             else{
-                return 40
+                if isLastQuestion{
+                    if indexPath.row == self.messages.count - 1{
+                        return 50
+                    }
+                    else{
+                        return 0
+                    }
+                }
+                else{
+                    if indexPath.row == self.messages.count - 1 - noOfAnswersAfterQuestions{
+                        return 50
+                    }
+                    else{
+                        return 0
+                    }
+                }
             }
         }
         else{
@@ -489,13 +506,18 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         for conversations in self.conversations{
             if conversations["qa"] == "q"{
                 self.messages.append(JSQMessage(senderId: conversations["customerId"], displayName: "Test", text: conversations["questions"]))
-                
+                self.isLastQuestion = false
+                self.noOfAnswersAfterQuestions += 1
             }
             else{
                 self.messages.append(JSQMessage(senderId: conversations["answerId"], displayName: "Test", text: conversations["answer"]))
+                
+                self.isLastQuestion = true
+                self.noOfAnswersAfterQuestions = 0
             }
         }
         self.collectionView.reloadData()
+        self.collectionView.
     }
     
     func sendQuestions(text: String){
