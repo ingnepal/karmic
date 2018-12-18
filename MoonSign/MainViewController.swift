@@ -26,6 +26,7 @@ class MainViewController: UIViewController {
     
     
     var chatState : Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Utility.ENABLE_IQKEYBOARD()
@@ -53,24 +54,7 @@ class MainViewController: UIViewController {
         self.navigationItem.setRightBarButton(item2, animated: true)
         
        
-        print(SaveData.isLoggedIn())
-        if SaveData.isLoggedIn() == false{
-            SaveData.setRegisteredStatus(flag: false)
-            self.fetchCustomer()
-            self.navigationItem.title = "Updating First time..."
-        }
-        else{
-            print("...........isLoggedIn............")
-            print(SaveData.getCustomerID())
-            let screenSize = UIScreen.main.bounds
-            let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
-            let controller = storyboard.instantiateViewController(withIdentifier: "ChatViewController")
-            addChildViewController(controller)
-            controller.view.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height-70)
-            self.chatView.addSubview(controller.view)
-            controller.didMove(toParentViewController: self)
-             self.navigationItem.title = "Moonsign"
-        }
+        
         
        
         
@@ -79,7 +63,30 @@ class MainViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-       
+        
+        
+        print(SaveData.isLoggedIn())
+        if SaveData.isLoggedIn() == false{
+            SaveData.setRegisteredStatus(flag: false)
+            self.fetchCustomer()
+            self.navigationItem.title = "Updating First time..."
+        }
+        else{
+            if chatState == 0 {
+                print("...........isLoggedIn............")
+                print(SaveData.getCustomerID())
+                let screenSize = UIScreen.main.bounds
+                let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+                let controller = storyboard.instantiateViewController(withIdentifier: "ChatViewController")
+                addChildViewController(controller)
+                controller.view.frame = CGRect(x: 0, y: 0, width: chatView.frame.width, height: chatView.frame.height+30)
+                self.chatView.addSubview(controller.view)
+                controller.didMove(toParentViewController: self)
+                self.navigationItem.title = "Moonsign"
+                
+                chatState = 1
+            }
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         

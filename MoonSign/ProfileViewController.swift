@@ -386,7 +386,8 @@ class ProfileViewController: UIViewController {
             "Country": self.country.text! as AnyObject,
             "DeviceToken": "sdsajdsji12" as AnyObject,
             "MacAddress": UIDevice.current.identifierForVendor?.uuidString as AnyObject,
-            "ImageUrl": imageBasea64 as AnyObject
+            "ImageUrl": imageBasea64 as AnyObject,
+            "Email": (self.emailText.text ?? "") as AnyObject
             ] as [String : AnyObject]
         print(parameters as AnyObject)
         HTTPRequests.HTTPPutRequestData(stringURL, parameters: parameters!, withSuccess: {(response,statusFlag) in

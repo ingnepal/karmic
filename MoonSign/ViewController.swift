@@ -56,8 +56,8 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         
         // Do any additional setup after loading the view, typically from a nib.
 //        incomingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage(named: "tailessMessageBubble")
-        incomingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage.jsq_bubbleCompactTailless(), capInsets: UIEdgeInsets.zero).incomingMessagesBubbleImage(with: ColorConstants.primaryColor)
-        outgoingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage.jsq_bubbleCompactTailless(), capInsets: UIEdgeInsets.zero).outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleGreen())
+        incomingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage.jsq_bubbleCompactTailless(), capInsets: UIEdgeInsets.zero).incomingMessagesBubbleImage(with: UIColor(red:0.88, green:0.88, blue:0.88, alpha:1.0))
+        outgoingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage.jsq_bubbleCompactTailless(), capInsets: UIEdgeInsets.zero).outgoingMessagesBubbleImage(with: UIColor(red:0.78, green:0.86, blue:0.95, alpha:1.0))
         
         self.senderAvatarImage = JSQMessagesAvatarImageFactory.avatarImage(with: #imageLiteral(resourceName: "profiledefault"), diameter: 30)
         self.receiverAvatarImage = JSQMessagesAvatarImageFactory.avatarImage(with: #imageLiteral(resourceName: "profiledefault"), diameter: 30)
@@ -119,6 +119,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         cell.cellTopLabel.textAlignment = .left
         cell.cellTopLabel.font = cell.cellTopLabel.font.withSize(14)
         
+        cell.textView.textColor = UIColor.black
         
         let message = self.conversations[indexPath.row]
         if message["qa"] == "a"{
@@ -138,7 +139,9 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
             
 //            let ratingView = CosmosView(frame: CGRect(x: cell.cellBottomLabel.frame.origin.x, y: cell.cellBottomLabel.frame.origin.y, width: cell.cellBottomLabel.frame.width, height: cell.cellBottomLabel.frame.height))
             
-            let ratingView = CosmosView(frame: CGRect(x: 8, y: cell.messageBubbleContainerView.frame.maxY + 30, width: cell.messageBubbleContainerView.frame.width, height: cell.cellBottomLabel.frame.height))
+             let ratingView = CosmosView(frame: CGRect(x: 0, y: 0, width: cell.cellBottomLabel.frame.width, height: cell.cellBottomLabel.frame.height))
+            
+//            let ratingView = CosmosView(frame: CGRect(x: 8, y: cell.messageBubbleContainerView.frame.maxY + 30, width: cell.messageBubbleContainerView.frame.width, height: cell.cellBottomLabel.frame.height))
             
             let initialRating = Double(message["rating"] ?? "0.0")
             ratingView.rating = initialRating ?? 1.0
@@ -154,15 +157,17 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
             }
             ratingView.settings.starSize = 30
             if indexPath.row == 0{
-                
+                ratingView.removeFromSuperview()
             }
             else{
 //                ratingView.removeFromSuperview()
-//                cell.contentView.addSubview(ratingView)
-//                cell.contentView.bringSubview(toFront: ratingView)
+                cell.cellBottomLabel.addSubview(ratingView)
+                cell.cellBottomLabel.bringSubview(toFront: ratingView)
                 
-                cell.messageBubbleContainerView.addSubview(ratingView)
-                cell.messageBubbleContainerView.bringSubview(toFront: ratingView)
+                cell.cellBottomLabel.isUserInteractionEnabled = true
+                
+//                cell.messageBubbleContainerView.addSubview(ratingView)
+//                cell.messageBubbleContainerView.bringSubview(toFront: ratingView)
                 
 //                cell.bringSubview(toFront: cell.messageBubbleContainerView)
             }
@@ -181,7 +186,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         singleTapGestureRecognizer.delegate = self
         singleTapGestureRecognizer.indexPath = indexPath
         if indexPath.row != 0{
-            cell.textView?.addGestureRecognizer(singleTapGestureRecognizer)
+//            cell.textView?.addGestureRecognizer(singleTapGestureRecognizer)
         }
         
         
@@ -254,7 +259,12 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         let messages = self.conversations[indexPath.row]
         
         if messages["qa"] == "a"{
-            return 40
+            if indexPath.row == 0{
+                return 0
+            }
+            else{
+                return 40
+            }
         }
         else{
             return 0
@@ -310,14 +320,15 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
             default:
                 break
             }
-            return NSAttributedString(string: stars)
+//            return NSAttributedString(string: stars)
+            return NSAttributedString(string: "")
         }
         else{
             return NSAttributedString(string: "")
         }
     }
     func rateMessage(id: String,rating: String){
-        let stringURL : String = HTTPConstants.baseURl + "/api/rating/rate"
+        let stringURL : String = HTTPConstants.baseURl + "api/rating/rate"
         let parameters = [
             "Id":id as AnyObject,
             "Rating":rating as AnyObject
