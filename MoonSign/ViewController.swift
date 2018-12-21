@@ -517,7 +517,6 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
             }
         }
         self.collectionView.reloadData()
-        self.collectionView.
     }
     
     func sendQuestions(text: String){

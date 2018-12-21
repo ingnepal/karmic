@@ -182,7 +182,7 @@ class MainViewController: UIViewController {
             let stringURL:String =  HTTPConstants.baseURl + "/api/customers/CreateCustomer"
             var parameters:[String:AnyObject]?
             parameters = [
-                "DeviceToken": "sdsajdsji12" as AnyObject,
+                "DeviceToken": SaveData.getDeviceToken() as AnyObject,
                 "MacAddress": UIDevice.current.identifierForVendor?.uuidString as AnyObject
                 ] as [String : AnyObject]
             print(parameters as AnyObject)
