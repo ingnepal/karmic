@@ -25,7 +25,7 @@ class CustomerSupportViewController: UIViewController {
     
 
     @IBAction func callUsClicked(_ sender: Any) {
-        let tel = "+9770000000"
+        let tel = "+18573422792"
         if let url = URL(string: "tel:\(tel)") {
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url)

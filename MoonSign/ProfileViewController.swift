@@ -25,6 +25,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var dobView: UIView!
     @IBOutlet weak var tobView: UIView!
+    @IBOutlet weak var emailText: UITextField!
+    
+    
     let userDetails = UserDetailsData()
     var genderString = "Male"
     
@@ -370,7 +373,7 @@ class ProfileViewController: UIViewController {
     }
     
     func storeUploadUserData(){
-        
+        Utility.ShowSVProgressHUD_Black_With_IgnoringInteraction()
         let stringURL = HTTPConstants.baseURl + "api/customers/UpdateCustomer"
         var parameters:[String:AnyObject]?
         parameters = [
@@ -383,12 +386,14 @@ class ProfileViewController: UIViewController {
             "Country": self.country.text! as AnyObject,
             "DeviceToken": "sdsajdsji12" as AnyObject,
             "MacAddress": UIDevice.current.identifierForVendor?.uuidString as AnyObject,
-            "ImageUrl": imageBasea64 as AnyObject
+            "ImageUrl": imageBasea64 as AnyObject,
+            "Email": (self.emailText.text ?? "") as AnyObject
             ] as [String : AnyObject]
         print(parameters as AnyObject)
         HTTPRequests.HTTPPutRequestData(stringURL, parameters: parameters!, withSuccess: {(response,statusFlag) in
             if statusFlag{
                 do{
+                    Utility.DismissSVProgressHUD_With_endIgnoringInteraction()
                     let rootData = try JSONDecoder().decode(UpdateCustomerRoot.self, from: response!)
                     
                     if rootData.meta?.status! ?? false == true{
@@ -419,7 +424,14 @@ class ProfileViewController: UIViewController {
                 }
             }
             else{
+                 Utility.DismissSVProgressHUD_With_endIgnoringInteraction()
+                let ac = UIAlertController(title: "Sorry", message: "Please check your internet connection", preferredStyle: .alert)
                 
+                ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                    self.navigationController?.popViewController(animated: true)
+                    
+                }))
+                self.present(ac, animated: true)
             }
             
         })

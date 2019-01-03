@@ -16,6 +16,8 @@ class NavigationDrawerViewController: UIViewController {
     @IBOutlet weak var questionPriceText: UILabel!
     @IBOutlet weak var questionPrice: UILabel!
     
+    @IBOutlet weak var vertexView: UIView!
+    @IBOutlet weak var blackSpringView: UIView!
     @IBOutlet weak var freeQuestions: UILabel!
     @IBOutlet weak var freeQuestionsText: UILabel!
     override func viewDidLoad() {
@@ -36,11 +38,43 @@ class NavigationDrawerViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.freeQuestions.text = "\(SaveData.getFreeQuestions())"
+        
+        let vtapGesture = UITapGestureRecognizer(target: self, action: #selector(self.vertexViewTapped(gesture:)))
+        let btapGesture = UITapGestureRecognizer(target: self, action: #selector(self.blackspringViewTapped(gesture:)))
+        
+        self.vertexView.isUserInteractionEnabled = true
+        self.vertexView.addGestureRecognizer(vtapGesture)
+        
+        self.blackSpringView.isUserInteractionEnabled = true
+        self.blackSpringView.addGestureRecognizer(btapGesture)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func vertexViewTapped(gesture: UITapGestureRecognizer){
+        guard let url = URL(string: "http://www.blackspring.net") else {
+            return //be safe
+        }
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
+    @objc func blackspringViewTapped(gesture: UITapGestureRecognizer){
+        guard let url = URL(string: "http://www.blackspring.net") else {
+            return //be safe
+        }
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
     
 
