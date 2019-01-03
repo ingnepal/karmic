@@ -13,9 +13,9 @@
 import UIKit
 import UserNotifications
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController,UITextViewDelegate {
 
-    @IBOutlet weak var messageText: UITextField!
+    @IBOutlet weak var messageText: UITextView!
 //    @IBOutlet weak var titleBarView: UIView!
 //    @IBOutlet weak var profileImage: UIImageView!
 //    @IBOutlet weak var menuImage: UIImageView!
@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
 //        self.titleBarView.layer.zPosition = .greatestFiniteMagnitude
 //        self.titleBarView.backgroundColor = ColorConstants.primaryColor
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        
+        self.messageText.delegate = self
         let btn1 = UIButton(type: .custom)
         btn1.setImage(UIImage(named: "menu"), for: .normal)
         btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -54,8 +54,12 @@ class MainViewController: UIViewController {
         self.navigationItem.setRightBarButton(item2, animated: true)
         
        
+        self.messageText.layer.borderWidth = 1
+        self.messageText.layer.borderColor = UIColor.lightGray.cgColor
+        self.messageText.layer.cornerRadius = 5
         
-        
+        self.messageText.text = "← Ideas what to ask"
+        self.messageText.textColor = UIColor.lightGray
        
         
         NotificationCenter.default.addObserver(self, selector: #selector(navigation(notification:)), name: .navigation, object: nil)
@@ -79,7 +83,7 @@ class MainViewController: UIViewController {
                 let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
                 let controller = storyboard.instantiateViewController(withIdentifier: "ChatViewController")
                 addChildViewController(controller)
-                controller.view.frame = CGRect(x: 0, y: 0, width: chatView.frame.width, height: chatView.frame.height+30)
+                controller.view.frame = CGRect(x: 0, y: 0, width: chatView.frame.width, height: chatView.frame.height-30)
                 self.chatView.addSubview(controller.view)
                 controller.didMove(toParentViewController: self)
                 self.navigationItem.title = "Moonsign"
@@ -248,12 +252,16 @@ class MainViewController: UIViewController {
         }
     }
     
-    @IBAction func textEditingEnded(_ sender: Any) {
-       
-    }
-    
-    @IBAction func textEditingBegan(_ sender: Any) {
-     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView == self.messageText {
+            if textView.text == "← Ideas what to ask"{
+                textView.text = ""
+                textView.textColor = UIColor.black
+            }
+            else{
+
+            }
+        }
     }
     
 }

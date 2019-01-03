@@ -373,7 +373,7 @@ class ProfileViewController: UIViewController {
     }
     
     func storeUploadUserData(){
-        
+        Utility.ShowSVProgressHUD_Black_With_IgnoringInteraction()
         let stringURL = HTTPConstants.baseURl + "api/customers/UpdateCustomer"
         var parameters:[String:AnyObject]?
         parameters = [
@@ -393,6 +393,7 @@ class ProfileViewController: UIViewController {
         HTTPRequests.HTTPPutRequestData(stringURL, parameters: parameters!, withSuccess: {(response,statusFlag) in
             if statusFlag{
                 do{
+                    Utility.DismissSVProgressHUD_With_endIgnoringInteraction()
                     let rootData = try JSONDecoder().decode(UpdateCustomerRoot.self, from: response!)
                     
                     if rootData.meta?.status! ?? false == true{
@@ -423,7 +424,14 @@ class ProfileViewController: UIViewController {
                 }
             }
             else{
+                 Utility.DismissSVProgressHUD_With_endIgnoringInteraction()
+                let ac = UIAlertController(title: "Sorry", message: "Please check your internet connection", preferredStyle: .alert)
                 
+                ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                    self.navigationController?.popViewController(animated: true)
+                    
+                }))
+                self.present(ac, animated: true)
             }
             
         })

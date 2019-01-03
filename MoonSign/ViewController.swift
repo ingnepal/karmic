@@ -81,6 +81,10 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
          self.inputToolbar.contentView.textView.placeHolder = "← Ideas what to ask"
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.scrollToBottom(animated: true)
+    }
+    
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
          finishSendingMessage()
         self.sendQuestions(text: text)
@@ -517,6 +521,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
             }
         }
         self.collectionView.reloadData()
+         self.scrollToBottom(animated: true)
     }
     
     func sendQuestions(text: String){

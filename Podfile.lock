@@ -19,6 +19,17 @@ DEPENDENCIES:
   - KYDrawerController
   - SVProgressHUD
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireImage
+    - Cosmos
+    - IQKeyboardManagerSwift
+    - JSQMessagesViewController
+    - JSQSystemSoundPlayer
+    - KYDrawerController
+    - SVProgressHUD
+
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
@@ -31,4 +42,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: dc2f29fcb9f217b912b4e7bcc1da92aa38ab51a3
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.6.0.beta.1
