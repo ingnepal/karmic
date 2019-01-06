@@ -283,7 +283,7 @@ class ProfileViewController: UIViewController {
             return
         }
         let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dateFormatterGet.dateFormat = "yyyy-MM-dd hh:mm a"
         
         if dateFormatterGet.date(from: "\(self.dateOfBirth.text!) \(self.timeOfBirth.text!)") == nil {
             let ac = UIAlertController(title: "Sorry", message: "Invalid Date and Time of Birth", preferredStyle: .alert)

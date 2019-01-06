@@ -10,5 +10,5 @@ import Foundation
 
 struct HTTPConstants{
         static let baseURl = "https://app.moonsign.org/"
-//    static let baseURl = "https://testserver.moonsign.org/"
+//   static let baseURl = "https://testserver.moonsign.org/"
 }

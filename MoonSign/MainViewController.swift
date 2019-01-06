@@ -47,7 +47,7 @@ class MainViewController: UIViewController,UITextViewDelegate {
         
         let btn2 = UIButton(type: .custom)
         btn2.setImage(UIImage(named: "user"), for: .normal)
-        btn2.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        btn2.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         btn2.addTarget(self, action: #selector(profileClicked(gesture:)), for: .touchUpInside)
         let item2 = UIBarButtonItem(customView: btn2)
         
@@ -60,7 +60,8 @@ class MainViewController: UIViewController,UITextViewDelegate {
         
         self.messageText.text = "← Ideas what to ask"
         self.messageText.textColor = UIColor.lightGray
-       
+       self.messageBubble.setImage(UIImage(named: "speech-bubble")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.messageBubble.tintColor = ColorConstants.primaryColor
         
         NotificationCenter.default.addObserver(self, selector: #selector(navigation(notification:)), name: .navigation, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setTemplate(notification:)), name: .getTemplateNotification, object: nil)
@@ -79,7 +80,6 @@ class MainViewController: UIViewController,UITextViewDelegate {
             if chatState == 0 {
                 print("...........isLoggedIn............")
                 print(SaveData.getCustomerID())
-                let screenSize = UIScreen.main.bounds
                 let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
                 let controller = storyboard.instantiateViewController(withIdentifier: "ChatViewController")
                 addChildViewController(controller)
@@ -187,6 +187,7 @@ class MainViewController: UIViewController,UITextViewDelegate {
             var parameters:[String:AnyObject]?
             parameters = [
                 "DeviceToken": SaveData.getDeviceToken() as AnyObject,
+                "IsIos": true as AnyObject,
                 "MacAddress": UIDevice.current.identifierForVendor?.uuidString as AnyObject
                 ] as [String : AnyObject]
             print(parameters as AnyObject)

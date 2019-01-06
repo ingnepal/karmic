@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6912F9C7D6FB2F1673F4CEE29DC04DA2"
+               BlueprintIdentifier = "CA4AAAE426D86C8837707A7C25B6CE5F"
                BuildableName = "Pods_MoonSignTests.framework"
                BlueprintName = "Pods-MoonSignTests"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6912F9C7D6FB2F1673F4CEE29DC04DA2"
+            BlueprintIdentifier = "CA4AAAE426D86C8837707A7C25B6CE5F"
             BuildableName = "Pods_MoonSignTests.framework"
             BlueprintName = "Pods-MoonSignTests"
             ReferencedContainer = "container:Pods.xcodeproj">

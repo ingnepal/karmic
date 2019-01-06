@@ -158,7 +158,8 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
             }
             ratingView.didFinishTouchingCosmos = {rating in
                 print("\(rating)"+":\(indexPath.row)")
-                self.rateMessage(id: message["id"] ?? "1",rating: "\(rating)")
+                print(message.description)
+                self.rateMessage(id: message["answerId"] ?? "1",rating: "\(rating)")
             }
             ratingView.settings.starSize = 30
             if indexPath.row == 0{
@@ -348,16 +349,23 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
             return NSAttributedString(string: "")
         }
     }
-    func rateMessage(id: String,rating: String){
+    func rateMessage(id: String, rating: String){
         let stringURL : String = HTTPConstants.baseURl + "api/rating/rate"
         let parameters = [
-            "Id":id as AnyObject,
-            "Rating":rating as AnyObject
+            "Id": id as AnyObject,
+            "Rating": Int(Float(rating)!) as AnyObject
             ] as [String:AnyObject]
         
         HTTPRequests.HTTPPostRequest(stringURL, parameters: parameters, withSuccess: ({ (responce, statusFlag) in
             if statusFlag{
-                self.fetchChats()
+                //self.fetchChats()
+                let ac = UIAlertController(title: "Success", message: "Your rating has been posted successfully", preferredStyle: .alert)
+                
+                ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                    self.navigationController?.popViewController(animated: true)
+                    
+                }))
+                self.present(ac, animated: true)
                 //                self.messages.append(JSQMessage(senderId: SaveData.getCustomerID(), displayName: "Test", text: text))
                 //                self.collectionView.reloadData()
             }
@@ -528,6 +536,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         let stringURL : String = HTTPConstants.baseURl + "api/question/CreateQuestion"
         let parameters = [
             "Questions": text as AnyObject,
+            "IsLatestVersion": true as AnyObject,
             "CustomerId": SaveData.getCustomerID() as AnyObject
         ] as [String:AnyObject]
         

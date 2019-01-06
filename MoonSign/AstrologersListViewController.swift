@@ -76,7 +76,11 @@ extension AstrologersListViewController: UITableViewDataSource,UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AstrologersListTableViewCell", for: indexPath) as! AstrologersListTableViewCell
         let data = self.astrolgersData[indexPath.row]
-        cell.titleImage.af_setImage(withURL: URL(string: data["imageUrl"]!)!)
+        if let imageUrl = data["imageUrl"] {
+            if let astroImage = URL(string: imageUrl){
+                cell.titleImage.af_setImage(withURL: astroImage)
+            }
+        }
         cell.title.text = data["username"]
         cell.subtitle.text = data["qualification"]
         return cell
