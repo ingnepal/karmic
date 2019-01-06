@@ -60,7 +60,7 @@ class MainViewController: UIViewController,UITextViewDelegate {
         
         self.messageText.text = "← Ideas what to ask"
         self.messageText.textColor = UIColor.lightGray
-       self.messageBubble.setImage(UIImage(named: "speech-bubble")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.messageBubble.setImage(UIImage(named: "speech-bubble")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.messageBubble.tintColor = ColorConstants.primaryColor
         
         NotificationCenter.default.addObserver(self, selector: #selector(navigation(notification:)), name: .navigation, object: nil)
@@ -174,6 +174,24 @@ class MainViewController: UIViewController,UITextViewDelegate {
             let controller = storyboard.instantiateViewController(withIdentifier: "HowMoonSIgnWorksViewController")
             self.navigationController?.pushViewController(controller, animated: true)
             break
+        case 6:
+            let myURL = URL(string: "https://app.moonsign.org/MoonSignPolicy/privacypolicy.html")!
+            // if openBrowser {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(myURL, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(myURL)
+            }
+            break
+        case 7:
+            let myURL = URL(string: "https://app.moonsign.org/MoonSignPolicy/TermsAndCondition.html")!
+            // if openBrowser {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(myURL, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(myURL)
+            }
+            break
         default:
             break
         }
@@ -258,8 +276,11 @@ class MainViewController: UIViewController,UITextViewDelegate {
             if textView.text == "← Ideas what to ask"{
                 textView.text = ""
                 textView.textColor = UIColor.black
+
             }
-            else{
+            else if (textView.text.isEmpty){
+                textView.text = "← Ideas what to ask"
+                textView.textColor = UIColor.lightGray
 
             }
         }
