@@ -2132,7 +2132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxR-wC-MV5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-967.20000000000005" y="2115.2923538230884"/>
+            <point key="canvasLocation" x="-1190" y="2473"/>
         </scene>
         <!--Welcome View2 View Controller-->
         <scene sceneID="8eQ-WB-2vd">
@@ -2167,7 +2167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A2i-45-PHl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="206" y="1132"/>
+            <point key="canvasLocation" x="555" y="1136"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PQh-HZ-Cmw">
