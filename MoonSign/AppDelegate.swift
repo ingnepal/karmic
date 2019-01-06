@@ -42,7 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print("**********push notification************")
+        print(userInfo)
         
+        completionHandler(UIBackgroundFetchResult.noData)
     }
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map { data -> String in
@@ -278,9 +281,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         // Post notification
         NotificationCenter.default.post(name: notificationName, object: nil)
-        
+//        completionHandler([.alert, .badge, .sound])
         // show alert while app is running in foreground
-        return completionHandler(UNNotificationPresentationOptions.alert)
+        return completionHandler([.alert, .badge, .sound])
     }
     
     

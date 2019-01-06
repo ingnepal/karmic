@@ -10,11 +10,27 @@ import UIKit
 
 class HowMoonSIgnWorksViewController: UIViewController {
 
+    @IBOutlet weak var getAnswerImage: UIImageView!
+    @IBOutlet weak var astrologerImage: UIImageView!
+    @IBOutlet weak var askQuestionImage: UIImageView!
+    @IBOutlet weak var shareBirthImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.title = "Moon Sign"
+        
+        getAnswerImage.image = getAnswerImage.image?.withRenderingMode(.alwaysTemplate)
+        astrologerImage.image = astrologerImage.image?.withRenderingMode(.alwaysTemplate)
+        askQuestionImage.image = askQuestionImage.image?.withRenderingMode(.alwaysTemplate)
+        shareBirthImage.image = shareBirthImage.image?.withRenderingMode(.alwaysTemplate)
+        
+        getAnswerImage.tintColor = ColorConstants.primaryColor
+        astrologerImage.tintColor = ColorConstants.primaryColor
+        askQuestionImage.tintColor = ColorConstants.primaryColor
+        shareBirthImage.tintColor = ColorConstants.primaryColor
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

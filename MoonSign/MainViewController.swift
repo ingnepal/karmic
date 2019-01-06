@@ -60,7 +60,8 @@ class MainViewController: UIViewController,UITextViewDelegate {
         
         self.messageText.text = "← Ideas what to ask"
         self.messageText.textColor = UIColor.lightGray
-       
+       self.messageBubble.setImage(UIImage(named: "speech-bubble")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.messageBubble.tintColor = ColorConstants.primaryColor
         
         NotificationCenter.default.addObserver(self, selector: #selector(navigation(notification:)), name: .navigation, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setTemplate(notification:)), name: .getTemplateNotification, object: nil)

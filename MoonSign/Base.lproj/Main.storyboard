@@ -29,10 +29,10 @@
                                         <rect key="frame" x="0.0" y="612" width="414" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AwB-y2-Kdp">
-                                                <rect key="frame" x="16" y="15" width="30" height="30"/>
+                                                <rect key="frame" x="16" y="10" width="40" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="30" id="GbH-FD-Mhz"/>
-                                                    <constraint firstAttribute="height" constant="30" id="jVa-0T-lDH"/>
+                                                    <constraint firstAttribute="width" constant="40" id="GbH-FD-Mhz"/>
+                                                    <constraint firstAttribute="height" constant="40" id="jVa-0T-lDH"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="speech-bubble"/>
                                                 <connections>
@@ -51,7 +51,7 @@
                                                 </connections>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xrc-cH-exx">
-                                                <rect key="frame" x="62" y="8" width="290" height="44"/>
+                                                <rect key="frame" x="72" y="8" width="280" height="44"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -777,6 +777,12 @@
                         <viewLayoutGuide key="safeArea" id="BPq-mv-D2R"/>
                     </view>
                     <navigationItem key="navigationItem" id="7RO-p6-kNZ"/>
+                    <connections>
+                        <outlet property="askQuestionImage" destination="e5u-OI-Tao" id="hkJ-VQ-0fZ"/>
+                        <outlet property="astrologerImage" destination="6j7-mI-baZ" id="9du-af-xtr"/>
+                        <outlet property="getAnswerImage" destination="dcN-7B-cOx" id="vR9-hQ-fJC"/>
+                        <outlet property="shareBirthImage" destination="yXg-KS-Pmn" id="qKb-6A-SRJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hiq-2L-B8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1968,10 +1974,10 @@
             </objects>
             <point key="canvasLocation" x="-220" y="1826.5367316341831"/>
         </scene>
-        <!--View Controller-->
+        <!--Welcome View3 View Controller-->
         <scene sceneID="vHx-ft-5Yt">
             <objects>
-                <viewController id="UQu-Hi-r9s" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeView3ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UQu-Hi-r9s" customClass="WelcomeView3ViewController" customModule="MoonSign" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="32c-u5-p8L">
                         <rect key="frame" x="0.0" y="0.0" width="398" height="396"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2083,6 +2089,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N6q-b8-XDG"/>
                     </view>
+                    <connections>
+                        <outlet property="titleIMage2" destination="pvW-49-wUV" id="ALR-Jh-kc5"/>
+                        <outlet property="titleIMage3" destination="ghD-Zc-wh9" id="Hu7-2C-Qm5"/>
+                        <outlet property="titleIMage4" destination="JsK-36-KKf" id="M5P-hK-6wT"/>
+                        <outlet property="titleImage1" destination="sPT-fG-E1O" id="caL-zs-0LL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Yf-LK-Dsk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2189,19 +2201,19 @@
         </scene>
     </scenes>
     <resources>
-        <image name="calendar" width="102.40000152587891" height="102.40000152587891"/>
-        <image name="group" width="102.40000152587891" height="102.40000152587891"/>
+        <image name="calendar" width="96" height="96"/>
+        <image name="group" width="96" height="96"/>
         <image name="ic_app_main" width="1024" height="1024"/>
         <image name="ic_blacspring_logo" width="439.92001342773438" height="147.36000061035156"/>
         <image name="ic_down-arrow" width="102.40000152587891" height="102.40000152587891"/>
         <image name="ic_main_with_sign" width="282" height="158.5"/>
         <image name="ic_selected_no" width="24" height="24"/>
         <image name="ic_vertex_logo" width="226" height="76"/>
-        <image name="info" width="102.40000152587891" height="102.40000152587891"/>
-        <image name="meditate" width="102.40000152587891" height="102.40000152587891"/>
+        <image name="info" width="96" height="96"/>
+        <image name="meditate" width="96" height="96"/>
         <image name="phonebook" width="102.40000152587891" height="102.40000152587891"/>
         <image name="send-button" width="102.40000152587891" height="102.40000152587891"/>
         <image name="share_thought" width="400.69564819335938" height="400.69564819335938"/>
-        <image name="speech-bubble" width="102.40000152587891" height="102.40000152587891"/>
+        <image name="speech-bubble" width="96" height="96"/>
     </resources>
 </document>
