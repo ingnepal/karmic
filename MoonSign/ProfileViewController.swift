@@ -94,7 +94,7 @@ class ProfileViewController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
-        Utility.ENABLE_IQKEYBOARD()
+      //  Utility.ENABLE_IQKEYBOARD()
         
         self.profileImage.image = UIImage(named: "profiledefault")
         self.profileImage.isUserInteractionEnabled = true
@@ -214,7 +214,10 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    override func viewDidDisappear(_ animated: Bool) {
+       // Utility.DISABLE_IQKEYBOARD()
+
+    }
     
     @objc func timeOfBirthClicked(gesture: UITapGestureRecognizer){
         let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)

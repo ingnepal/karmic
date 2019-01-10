@@ -76,6 +76,8 @@ class MainViewController: UIViewController,UITextViewDelegate {
         messageText.resignFirstResponder()
         self.view.endEditing(true)
     }
+    
+    
 
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
@@ -117,7 +119,8 @@ class MainViewController: UIViewController,UITextViewDelegate {
     }
     override func viewDidAppear(_ animated: Bool) {
         
-        
+    //    Utility.ENABLE_IQKEYBOARD_AUTO_TOOLBAR()
+
         
 //        let menuTapGesture = UITapGestureRecognizer(target: self, action: #selector(menuClicked(gesture:)))
 //        self.menuImage.isUserInteractionEnabled = true
