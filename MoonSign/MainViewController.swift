@@ -29,9 +29,11 @@ class MainViewController: UIViewController,UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Utility.ENABLE_IQKEYBOARD()
+      //  Utility.ENABLE_IQKEYBOARD()
 //       SaveData.setFirstLogin(flag: true)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
 //        self.titleBarView.layer.zPosition = .greatestFiniteMagnitude
 //        self.titleBarView.backgroundColor = ColorConstants.primaryColor
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -66,6 +68,23 @@ class MainViewController: UIViewController,UITextViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(navigation(notification:)), name: .navigation, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setTemplate(notification:)), name: .getTemplateNotification, object: nil)
         
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         

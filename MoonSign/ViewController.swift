@@ -412,7 +412,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         
         setupCacheMessages()
         
-        let stringURL : String = HTTPConstants.baseURl + "api/question/GetConvo/" + SaveData.getCustomerID()
+        let stringURL : String = HTTPConstants.baseURl + "api/question/GetConvo/" + SaveData.getCustomerID()!
         HTTPRequests.HTTPGetRequestData(stringURL, withSuccess: {(response,statusFlag) in
             if statusFlag{
                 do{

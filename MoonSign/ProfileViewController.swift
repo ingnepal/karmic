@@ -345,7 +345,7 @@ class ProfileViewController: UIViewController {
     }
     
     func getCustomerDetails(){
-        let stringURL = HTTPConstants.baseURl + "api/customers/GetCustomer/" + SaveData.getCustomerID()
+        let stringURL = HTTPConstants.baseURl + "api/customers/GetCustomer/" + SaveData.getCustomerID()!
         HTTPRequests.HTTPGetRequestData(stringURL) { (response, statusFlag) in
             if statusFlag{
                 do{
