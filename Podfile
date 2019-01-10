@@ -13,7 +13,8 @@ target 'MoonSign' do
   pod 'AlamofireImage', '~> 3.3'
   pod 'SVProgressHUD'
   pod 'IQKeyboardManagerSwift'
-  
+  pod 'SwiftSoup'
+
   target 'MoonSignTests' do
     inherit! :search_paths
     # Pods for testing

@@ -25,6 +25,10 @@
                                         <rect key="frame" x="0.0" y="40" width="414" height="561"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSh-oq-gFq">
+                                        <rect key="frame" x="0.0" y="40" width="414" height="492"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ekP-EW-spc">
                                         <rect key="frame" x="0.0" y="602" width="414" height="70"/>
                                         <subviews>
@@ -50,7 +54,7 @@
                                                     <action selector="sendButtonClicked:" destination="1QT-2x-dAP" eventType="touchUpInside" id="MYI-OD-s3H"/>
                                                 </connections>
                                             </button>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xrc-cH-exx">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xrc-cH-exx">
                                                 <rect key="frame" x="72" y="8" width="280" height="54"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -92,12 +96,16 @@
                                 <constraints>
                                     <constraint firstItem="OHh-NP-LQW" firstAttribute="top" secondItem="UMg-fN-Kzj" secondAttribute="bottom" id="2jJ-D9-JHN"/>
                                     <constraint firstItem="UMg-fN-Kzj" firstAttribute="top" secondItem="hLM-Jv-27x" secondAttribute="bottom" id="BbK-T7-x7D"/>
+                                    <constraint firstItem="ekP-EW-spc" firstAttribute="top" secondItem="WSh-oq-gFq" secondAttribute="bottom" constant="70" id="CyY-rh-YPA"/>
                                     <constraint firstItem="ekP-EW-spc" firstAttribute="top" secondItem="OHh-NP-LQW" secondAttribute="bottom" id="DYK-Xu-1xs"/>
+                                    <constraint firstItem="WSh-oq-gFq" firstAttribute="leading" secondItem="mxh-sK-Jnh" secondAttribute="leading" id="I9d-tC-LF6"/>
                                     <constraint firstItem="hLM-Jv-27x" firstAttribute="leading" secondItem="mxh-sK-Jnh" secondAttribute="leading" id="KvP-Oe-gnI"/>
                                     <constraint firstItem="OHh-NP-LQW" firstAttribute="leading" secondItem="mxh-sK-Jnh" secondAttribute="leading" id="S41-yL-hif"/>
                                     <constraint firstAttribute="trailing" secondItem="OHh-NP-LQW" secondAttribute="trailing" id="ZsO-XX-40Z"/>
                                     <constraint firstAttribute="trailing" secondItem="hLM-Jv-27x" secondAttribute="trailing" id="bEQ-xv-mY0"/>
+                                    <constraint firstItem="WSh-oq-gFq" firstAttribute="top" secondItem="hLM-Jv-27x" secondAttribute="bottom" id="chs-y2-JRF"/>
                                     <constraint firstItem="UMg-fN-Kzj" firstAttribute="leading" secondItem="mxh-sK-Jnh" secondAttribute="leading" id="htg-Js-SNw"/>
+                                    <constraint firstAttribute="trailing" secondItem="WSh-oq-gFq" secondAttribute="trailing" id="jxG-cx-6vr"/>
                                     <constraint firstAttribute="bottom" secondItem="ekP-EW-spc" secondAttribute="bottom" id="nMb-VW-Bwc"/>
                                     <constraint firstItem="ekP-EW-spc" firstAttribute="leading" secondItem="mxh-sK-Jnh" secondAttribute="leading" id="po8-Mr-UKv"/>
                                     <constraint firstAttribute="trailing" secondItem="ekP-EW-spc" secondAttribute="trailing" id="qtF-V5-Yx7"/>
@@ -358,7 +366,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ReA-zp-O4h">
                                                                 <rect key="frame" x="0.0" y="0.0" width="191" height="80"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COUNTRY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40a-Q0-W3X">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40a-Q0-W3X">
                                                                         <rect key="frame" x="8" y="8" width="175" height="21"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="21" id="7yN-z7-njy"/>
