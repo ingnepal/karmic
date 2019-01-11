@@ -32,7 +32,7 @@ class MainViewController: UIViewController,UITextViewDelegate {
 //       SaveData.setFirstLogin(flag: true)
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-     
+
 //        self.titleBarView.layer.zPosition = .greatestFiniteMagnitude
 //        self.titleBarView.backgroundColor = ColorConstants.primaryColor
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -82,7 +82,7 @@ class MainViewController: UIViewController,UITextViewDelegate {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
+                self.view.frame.origin.y -= keyboardSize.height + 40
             }
         }
     }
@@ -93,7 +93,8 @@ class MainViewController: UIViewController,UITextViewDelegate {
         }
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        Utility.ENABLE_IQKEYBOARD_AUTO_TOOLBAR()
+
         
         print(SaveData.isLoggedIn())
         if SaveData.isLoggedIn() == false{

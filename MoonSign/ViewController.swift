@@ -53,7 +53,6 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         
         print("Device token",SaveData.getDeviceToken())
         fetchTemplateMessages()
-//        Utility.ENABLE_IQKEYBOARD()
         NotificationCenter.default.addObserver(self, selector: #selector(sendMessageNotification(notification:)), name: .messageSendNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(messageBubbleNotification), name: .messageBubbleNotification, object: nil)
 //        self.inputToolbar.contentView.leftBarButtonItem.setImage(UIImage(named: "speech-bubble"), for: .normal)

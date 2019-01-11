@@ -94,7 +94,7 @@ class ProfileViewController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
-      //  Utility.ENABLE_IQKEYBOARD()
+        Utility.ENABLE_IQKEYBOARD()
         
         self.profileImage.image = UIImage(named: "profiledefault")
         self.profileImage.isUserInteractionEnabled = true
@@ -107,6 +107,10 @@ class ProfileViewController: UIViewController {
             updateUI()
         }
        // getCustomerDetails()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Utility.DISABLE_IQKEYBOARD()
     }
     
     fileprivate func updateUI(){
