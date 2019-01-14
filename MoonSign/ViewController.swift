@@ -55,14 +55,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         fetchTemplateMessages()
         NotificationCenter.default.addObserver(self, selector: #selector(sendMessageNotification(notification:)), name: .messageSendNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(messageBubbleNotification), name: .messageBubbleNotification, object: nil)
-//        self.inputToolbar.contentView.leftBarButtonItem.setImage(UIImage(named: "speech-bubble"), for: .normal)
-//        self.inputToolbar.contentView.leftBarButtonItem.frame = CGRect(x: self.inputToolbar.contentView.leftBarButtonItem.frame.origin.x, y: self.inputToolbar.contentView.leftBarButtonItem.frame.origin.y, width: self.inputToolbar.contentView.leftBarButtonItem.frame.width, height: self.inputToolbar.contentView.leftBarButtonItem.frame.height)
-        
-//        self.inputToolbar.contentView.leftBarButtonItem.translatesAutoresizingMaskIntoConstraints = false
-//        self.inputToolbar.contentView.leftBarButtonItem.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-//        self.inputToolbar.contentView.leftBarButtonItem.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-//        self.inputToolbar.contentView.leftBarButtonItem.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-//        self.inputToolbar.contentView.leftBarButtonItem.heightAnchor.constraint(equalToConstant: 44)
+        self.automaticallyAdjustsScrollViewInsets = true
 
         self.inputToolbar.isHidden = true
         self.senderId = SaveData.getCustomerID()

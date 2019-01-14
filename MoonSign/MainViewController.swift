@@ -32,11 +32,13 @@ class MainViewController: UIViewController,UITextViewDelegate {
 //       SaveData.setFirstLogin(flag: true)
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+      
 
 //        self.titleBarView.layer.zPosition = .greatestFiniteMagnitude
 //        self.titleBarView.backgroundColor = ColorConstants.primaryColor
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.messageText.delegate = self
+
         let btn1 = UIButton(type: .custom)
         btn1.setImage(UIImage(named: "menu"), for: .normal)
         btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -82,7 +84,7 @@ class MainViewController: UIViewController,UITextViewDelegate {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height + 50
+                self.view.frame.origin.y -= keyboardSize.height
             }
         }
     }
@@ -93,7 +95,8 @@ class MainViewController: UIViewController,UITextViewDelegate {
         }
     }
     override func viewWillAppear(_ animated: Bool) {
-        Utility.ENABLE_IQKEYBOARD_AUTO_TOOLBAR()
+        Utility.DISABLE_IQKEYBOARD()
+        Utility.DISABLE_IQKEYBOARD_AUTO_TOOLBAR()
 
         
         print(SaveData.isLoggedIn())
@@ -119,7 +122,9 @@ class MainViewController: UIViewController,UITextViewDelegate {
         }
     }
     override func viewDidAppear(_ animated: Bool) {
-        
+        Utility.DISABLE_IQKEYBOARD()
+        Utility.DISABLE_IQKEYBOARD_AUTO_TOOLBAR()
+
     //    Utility.ENABLE_IQKEYBOARD_AUTO_TOOLBAR()
 
         
@@ -136,7 +141,12 @@ class MainViewController: UIViewController,UITextViewDelegate {
         
     }
     override func viewDidDisappear(_ animated: Bool) {
-       
+       Utility.ENABLE_IQKEYBOARD()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Utility.ENABLE_IQKEYBOARD()
+
     }
     @objc func menuClicked(gesture: UITapGestureRecognizer){
         let appDel = UIApplication.shared.delegate as! AppDelegate
@@ -305,11 +315,11 @@ class MainViewController: UIViewController,UITextViewDelegate {
                 textView.textColor = UIColor.black
 
             }
-            else if (textView.text.isEmpty){
-                textView.text = "← Ideas what to ask"
-                textView.textColor = UIColor.lightGray
-
-            }
+//            else if (textView.text.isEmpty){
+//                textView.text = "← Ideas what to ask"
+//                textView.textColor = UIColor.lightGray
+//
+//            }
         }
     }
     

@@ -39,7 +39,7 @@ class ProfileViewController: UIViewController {
     
     var imageBasea64 : String?
     override func viewDidLoad() {
-        
+        Utility.ENABLE_IQKEYBOARD()
         self.registerButton.backgroundColor = ColorConstants.accentColor
         
         super.viewDidLoad()
@@ -94,7 +94,6 @@ class ProfileViewController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
-        Utility.ENABLE_IQKEYBOARD()
         
         self.profileImage.image = UIImage(named: "profiledefault")
         self.profileImage.isUserInteractionEnabled = true
@@ -112,7 +111,9 @@ class ProfileViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         Utility.DISABLE_IQKEYBOARD()
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     fileprivate func updateUI(){
         let data = userDetails.getUserDetails()
         var profile = data?[0]
@@ -220,6 +221,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
        // Utility.DISABLE_IQKEYBOARD()
+        Utility.ENABLE_IQKEYBOARD()
 
     }
     
