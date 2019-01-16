@@ -279,7 +279,9 @@ JSQMessagesKeyboardControllerDelegate>
     NSLog(@"touch began");
 }
 -(void)tapResponder: (UITapGestureRecognizer *)sender{
-    NSLog(@"Double Tapped");
+    NSLog(@"touch began");
+
+    [self hideKeyboard];
 }
 - (void)viewWillAppear:(BOOL)animated
 {

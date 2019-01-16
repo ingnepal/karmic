@@ -11,6 +11,10 @@ import JSQMessagesViewController
 import Cosmos
 import SwiftSoup
 class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecognizerDelegate, JSQMessagesInputToolbarDelegate {
+    override func hideKeyboard() {
+        print("tapped")
+    }
+    
     func messagesInputToolbar(_ toolbar: JSQMessagesInputToolbar!, didPressRightBarButton sender: UIButton!) {
         print("right")
     }
@@ -50,13 +54,11 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         print("Device token",SaveData.getDeviceToken())
         fetchTemplateMessages()
         NotificationCenter.default.addObserver(self, selector: #selector(sendMessageNotification(notification:)), name: .messageSendNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(messageBubbleNotification), name: .messageBubbleNotification, object: nil)
         self.automaticallyAdjustsScrollViewInsets = true
-
         self.inputToolbar.isHidden = true
         self.senderId = SaveData.getCustomerID()
         self.senderDisplayName = "Test"

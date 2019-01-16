@@ -32,6 +32,7 @@ class MainViewController: UIViewController,UITextViewDelegate {
 //       SaveData.setFirstLogin(flag: true)
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillHide), name: NSNotification.Name(rawValue: "HideKeyboard"), object: nil)
       
 
 //        self.titleBarView.layer.zPosition = .greatestFiniteMagnitude
@@ -82,9 +83,14 @@ class MainViewController: UIViewController,UITextViewDelegate {
     
 
     @objc func keyboardWillShow(notification: NSNotification) {
+        let device = model
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
+                if device == "iPhone X"{
+                    self.view.frame.origin.y -= keyboardSize.height + 20
+                }else{
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
             }
         }
     }
@@ -151,6 +157,10 @@ class MainViewController: UIViewController,UITextViewDelegate {
     @objc func menuClicked(gesture: UITapGestureRecognizer){
         let appDel = UIApplication.shared.delegate as! AppDelegate
         appDel.drawerController.setDrawerState(.opened, animated: true)
+        messageText.resignFirstResponder()
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     @objc func profileClicked(gesture: UITapGestureRecognizer){
@@ -160,7 +170,10 @@ class MainViewController: UIViewController,UITextViewDelegate {
 //        controller.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
 //        controller.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
 //        self.present(controller, animated: true, completion: nil)
-        print("***************************Something is Happening************************************")
+        messageText.resignFirstResponder()
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
 
     override func didReceiveMemoryWarning() {

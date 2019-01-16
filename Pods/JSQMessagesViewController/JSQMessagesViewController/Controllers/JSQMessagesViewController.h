@@ -22,7 +22,11 @@
 #import "JSQMessagesCollectionViewFlowLayout.h"
 #import "JSQMessagesInputToolbar.h"
 #import "JSQMessagesKeyboardController.h"
-
+//@protocol KeyboardHideProtocol
+//@required
+//- (void)hideKeyboard;
+//
+//@end
 /**
  *  The `JSQMessagesViewController` class is an abstract class that represents a view controller whose content consists of
  *  a `JSQMessagesCollectionView` and `JSQMessagesInputToolbar` and is specialized to display a messaging interface.
@@ -32,6 +36,7 @@
 @interface JSQMessagesViewController : UIViewController <JSQMessagesCollectionViewDataSource,
                                                          JSQMessagesCollectionViewDelegateFlowLayout,
                                                          UITextViewDelegate>
+
 
 /**
  *  Returns the collection view object managed by this view controller.
@@ -212,6 +217,8 @@
                   senderId:(NSString *)senderId
          senderDisplayName:(NSString *)senderDisplayName
                       date:(NSDate *)date;
+- (void)hideKeyboard;
+
 
 /**
  *  This method is called when the user taps the accessory button on the `inputToolbar`.
