@@ -9,8 +9,21 @@
 import UIKit
 import JSQMessagesViewController
 import Cosmos
+import SwiftSoup
+class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecognizerDelegate, JSQMessagesInputToolbarDelegate {
+    override func hideKeyboard() {
+        print("tapped")
+    }
+    
+    func messagesInputToolbar(_ toolbar: JSQMessagesInputToolbar!, didPressRightBarButton sender: UIButton!) {
+        print("right")
+    }
+    
+    func messagesInputToolbar(_ toolbar: JSQMessagesInputToolbar!, didPressLeftBarButton sender: UIButton!) {
+        print("left")
 
-class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecognizerDelegate {
+    }
+    
     func getText(text: String) {
 //      self.sendQuestions(text: text)
         self.inputToolbar.contentView.textView.text = text
@@ -41,17 +54,12 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         print("Device token",SaveData.getDeviceToken())
         fetchTemplateMessages()
-//        Utility.ENABLE_IQKEYBOARD()
         NotificationCenter.default.addObserver(self, selector: #selector(sendMessageNotification(notification:)), name: .messageSendNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(messageBubbleNotification), name: .messageBubbleNotification, object: nil)
-//        self.inputToolbar.contentView.leftBarButtonItem.setImage(UIImage(named: "speech-bubble"), for: .normal)
-//        self.inputToolbar.contentView.leftBarButtonItem.frame = CGRect(x: self.inputToolbar.contentView.leftBarButtonItem.frame.origin.x, y: self.inputToolbar.contentView.leftBarButtonItem.frame.origin.y, width: self.inputToolbar.contentView.leftBarButtonItem.frame.width, height: self.inputToolbar.contentView.leftBarButtonItem.frame.height)
-        
+        self.automaticallyAdjustsScrollViewInsets = true
         self.inputToolbar.isHidden = true
-        
         self.senderId = SaveData.getCustomerID()
         self.senderDisplayName = "Test"
         
@@ -80,7 +88,9 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
     override func viewWillAppear(_ animated: Bool) {
          self.inputToolbar.contentView.textView.placeHolder = "← Ideas what to ask"
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     override func viewDidAppear(_ animated: Bool) {
         self.scrollToBottom(animated: true)
     }
@@ -129,17 +139,20 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         let message = self.conversations[indexPath.row]
         if message["qa"] == "a"{
             
-           
-           
-            
-        
-            
 //            let webView = UIWebView(frame: CGRect(x: cell.textView.frame.origin.x, y: cell.textView.frame.origin.y, width: cell.messageBubbleContainerView.frame.width, height: cell.messageBubbleContainerView.frame.height))
 //            webView.isOpaque = false
 //            webView.backgroundColor = UIColor.clear
 //            webView.loadHTMLString(message["answer"]!, baseURL: nil)
 //            cell.messageBubbleContainerView.addSubview(webView)
-           cell.textView.text = message["answer"]?.htmlToString
+            do {
+                let html = message["answer"]
+                let doc = try SwiftSoup.parse(html!)
+                cell.textView.text = try doc.text()
+
+              //  return try doc.text()
+            }  catch {
+                print("error")
+            }
             cell.avatarImageView.af_setImage(withURL: SaveData.getModeratorImageURL())
             
 //            let ratingView = CosmosView(frame: CGRect(x: cell.cellBottomLabel.frame.origin.x, y: cell.cellBottomLabel.frame.origin.y, width: cell.cellBottomLabel.frame.width, height: cell.cellBottomLabel.frame.height))
@@ -198,6 +211,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         
         return cell
     }
+    
     private func didTouchCosmos(_ rating: Double) {
 //        self.ratingText.text = self.formatValue(rating)
 //        self.rating = self.formatValue(rating)
@@ -412,7 +426,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         
         setupCacheMessages()
         
-        let stringURL : String = HTTPConstants.baseURl + "api/question/GetConvo/" + SaveData.getCustomerID()
+        let stringURL : String = HTTPConstants.baseURl + "api/question/GetConvo/" + SaveData.getCustomerID()!
         HTTPRequests.HTTPGetRequestData(stringURL, withSuccess: {(response,statusFlag) in
             if statusFlag{
                 do{
@@ -608,5 +622,17 @@ class IndexTapGesture: UITapGestureRecognizer {
 //        // Ensures the reused cosmos view is as good as new
 //    }
 //}
-
+//extension String {
+//    func htmlAttributedString(fontSize: CGFloat = 17.0) -> NSAttributedString? {
+//        let fontName = UIFont.systemFont(ofSize: fontSize).fontName
+//        let string = self.appending(String(format: "<style>body{font-family: '%@'; font-size:%fpx;}</style>", fontName, fontSize))
+//        guard let data = string.data(using: String.Encoding.utf16, allowLossyConversion: false) else { return nil }
+//
+//        guard let html = try? NSMutableAttributedString (
+//            data: data,
+//            options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html],
+//            documentAttributes: nil) else { return nil }
+//        return html
+//    }
+//}
 

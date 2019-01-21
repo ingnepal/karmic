@@ -266,11 +266,23 @@ JSQMessagesKeyboardControllerDelegate>
     [super viewDidLoad];
 
     [[[self class] nib] instantiateWithOwner:self options:nil];
-
+    [[self view] setUserInteractionEnabled: YES];
+    [[self view] setBackgroundColor:[UIColor blueColor]];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapResponder:)];
+    tap.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:tap];
     [self jsq_configureMessagesViewController];
     [self jsq_registerForNotifications:YES];
 }
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    NSLog(@"touch began");
+}
+-(void)tapResponder: (UITapGestureRecognizer *)sender{
+    NSLog(@"touch began");
 
+    [self hideKeyboard];
+}
 - (void)viewWillAppear:(BOOL)animated
 {
     NSParameterAssert(self.senderId != nil);

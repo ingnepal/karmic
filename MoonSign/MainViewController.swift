@@ -29,13 +29,17 @@ class MainViewController: UIViewController,UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Utility.ENABLE_IQKEYBOARD()
 //       SaveData.setFirstLogin(flag: true)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillHide), name: NSNotification.Name(rawValue: "HideKeyboard"), object: nil)
+      
+
 //        self.titleBarView.layer.zPosition = .greatestFiniteMagnitude
 //        self.titleBarView.backgroundColor = ColorConstants.primaryColor
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.messageText.delegate = self
+
         let btn1 = UIButton(type: .custom)
         btn1.setImage(UIImage(named: "menu"), for: .normal)
         btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -60,14 +64,46 @@ class MainViewController: UIViewController,UITextViewDelegate {
         
         self.messageText.text = "← Ideas what to ask"
         self.messageText.textColor = UIColor.lightGray
-       
+        self.messageBubble.setImage(UIImage(named: "speech-bubble")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.messageBubble.tintColor = ColorConstants.primaryColor
         
         NotificationCenter.default.addObserver(self, selector: #selector(navigation(notification:)), name: .navigation, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(setTemplate(notification:)), name: .getTemplateNotification, object: nil)
         
     }
+    func textFieldShouldReturn(userText: UITextField!) -> Bool {
+        userText.resignFirstResponder()
+        return true;
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        messageText.resignFirstResponder()
+        self.view.endEditing(true)
+    }
+    
+    
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        let device = model
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                if device == "iPhone X"{
+                    self.view.frame.origin.y -= keyboardSize.height + 20
+                }else{
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
-        
+        Utility.DISABLE_IQKEYBOARD()
+        Utility.DISABLE_IQKEYBOARD_AUTO_TOOLBAR()
+
         
         print(SaveData.isLoggedIn())
         if SaveData.isLoggedIn() == false{
@@ -92,8 +128,11 @@ class MainViewController: UIViewController,UITextViewDelegate {
         }
     }
     override func viewDidAppear(_ animated: Bool) {
-        
-        
+        Utility.DISABLE_IQKEYBOARD()
+        Utility.DISABLE_IQKEYBOARD_AUTO_TOOLBAR()
+
+    //    Utility.ENABLE_IQKEYBOARD_AUTO_TOOLBAR()
+
         
 //        let menuTapGesture = UITapGestureRecognizer(target: self, action: #selector(menuClicked(gesture:)))
 //        self.menuImage.isUserInteractionEnabled = true
@@ -108,11 +147,20 @@ class MainViewController: UIViewController,UITextViewDelegate {
         
     }
     override func viewDidDisappear(_ animated: Bool) {
-       
+       Utility.ENABLE_IQKEYBOARD()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Utility.ENABLE_IQKEYBOARD()
+
     }
     @objc func menuClicked(gesture: UITapGestureRecognizer){
         let appDel = UIApplication.shared.delegate as! AppDelegate
         appDel.drawerController.setDrawerState(.opened, animated: true)
+        messageText.resignFirstResponder()
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     @objc func profileClicked(gesture: UITapGestureRecognizer){
@@ -122,7 +170,10 @@ class MainViewController: UIViewController,UITextViewDelegate {
 //        controller.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
 //        controller.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
 //        self.present(controller, animated: true, completion: nil)
-        print("***************************Something is Happening************************************")
+        messageText.resignFirstResponder()
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -172,6 +223,24 @@ class MainViewController: UIViewController,UITextViewDelegate {
             appDel.drawerController.setDrawerState(.closed, animated: true)
             let controller = storyboard.instantiateViewController(withIdentifier: "HowMoonSIgnWorksViewController")
             self.navigationController?.pushViewController(controller, animated: true)
+            break
+        case 6:
+            let myURL = URL(string: "https://app.moonsign.org/MoonSignPolicy/privacypolicy.html")!
+            // if openBrowser {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(myURL, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(myURL)
+            }
+            break
+        case 7:
+            let myURL = URL(string: "https://app.moonsign.org/MoonSignPolicy/TermsAndCondition.html")!
+            // if openBrowser {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(myURL, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(myURL)
+            }
             break
         default:
             break
@@ -257,10 +326,13 @@ class MainViewController: UIViewController,UITextViewDelegate {
             if textView.text == "← Ideas what to ask"{
                 textView.text = ""
                 textView.textColor = UIColor.black
-            }
-            else{
 
             }
+//            else if (textView.text.isEmpty){
+//                textView.text = "← Ideas what to ask"
+//                textView.textColor = UIColor.lightGray
+//
+//            }
         }
     }
     
@@ -273,6 +345,7 @@ extension Notification.Name {
 }
 extension String {
     var htmlToAttributedString: NSAttributedString? {
+
         guard let data = data(using: .utf8) else { return NSAttributedString() }
         do {
             return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
@@ -285,3 +358,47 @@ extension String {
     }
 }
 
+extension UIView {
+    
+    // In order to create computed properties for extensions, we need a key to
+    // store and access the stored property
+    fileprivate struct AssociatedObjectKeys {
+        static var tapGestureRecognizer = "MediaViewerAssociatedObjectKey_mediaViewer"
+    }
+    
+    fileprivate typealias Action = (() -> Void)?
+    
+    // Set our computed property type to a closure
+    fileprivate var tapGestureRecognizerAction: Action? {
+        set {
+            if let newValue = newValue {
+                // Computed properties get stored as associated objects
+                objc_setAssociatedObject(self, &AssociatedObjectKeys.tapGestureRecognizer, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+            }
+        }
+        get {
+            let tapGestureRecognizerActionInstance = objc_getAssociatedObject(self, &AssociatedObjectKeys.tapGestureRecognizer) as? Action
+            return tapGestureRecognizerActionInstance
+        }
+    }
+    
+    // This is the meat of the sauce, here we create the tap gesture recognizer and
+    // store the closure the user passed to us in the associated object we declared above
+    public func addTapGestureRecognizer(action: (() -> Void)?) {
+        self.isUserInteractionEnabled = true
+        self.tapGestureRecognizerAction = action
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+        self.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    // Every time the user taps on the UIImageView, this function gets called,
+    // which triggers the closure we stored
+    @objc fileprivate func handleTapGesture(sender: UITapGestureRecognizer) {
+        if let action = self.tapGestureRecognizerAction {
+            action?()
+        } else {
+            print("no action")
+        }
+    }
+    
+}

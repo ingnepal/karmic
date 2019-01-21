@@ -11,6 +11,7 @@
 		04162E9521B7B26500955653 /* ConversationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04162E9421B7B26500955653 /* ConversationData.swift */; };
 		04162E9721B7DD4900955653 /* GetConversationModerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04162E9621B7DD4900955653 /* GetConversationModerator.swift */; };
 		04162E9921B7DD7700955653 /* GetConversationAstrologer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04162E9821B7DD7700955653 /* GetConversationAstrologer.swift */; };
+		0425328A21DF403000F06F71 /* WelcomeView3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0425328921DF403000F06F71 /* WelcomeView3ViewController.swift */; };
 		042BA31B214779A70020F4EC /* HTTPConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042BA31A214779A70020F4EC /* HTTPConstants.swift */; };
 		0441D5EE2159FB7000E5D853 /* HoroscopeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0441D5ED2159FB7000E5D853 /* HoroscopeViewController.swift */; };
 		0441D5F02159FB8500E5D853 /* HoroscopeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0441D5EF2159FB8500E5D853 /* HoroscopeTableViewCell.swift */; };
@@ -104,6 +105,7 @@
 		04162E9421B7B26500955653 /* ConversationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationData.swift; sourceTree = "<group>"; };
 		04162E9621B7DD4900955653 /* GetConversationModerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetConversationModerator.swift; sourceTree = "<group>"; };
 		04162E9821B7DD7700955653 /* GetConversationAstrologer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetConversationAstrologer.swift; sourceTree = "<group>"; };
+		0425328921DF403000F06F71 /* WelcomeView3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView3ViewController.swift; sourceTree = "<group>"; };
 		042BA31A214779A70020F4EC /* HTTPConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPConstants.swift; sourceTree = "<group>"; };
 		0441D5ED2159FB7000E5D853 /* HoroscopeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeViewController.swift; sourceTree = "<group>"; };
 		0441D5EF2159FB8500E5D853 /* HoroscopeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeTableViewCell.swift; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 				04E88F57219D332200A4CA20 /* WelcomeViewController.swift */,
 				04CEC5E921A132B000ADB1FC /* WelcomeView1ViewController.swift */,
 				04CEC5EB21A132E300ADB1FC /* WelcomeView2ViewController.swift */,
+				0425328921DF403000F06F71 /* WelcomeView3ViewController.swift */,
 			);
 			path = WelcomeScreen;
 			sourceTree = "<group>";
@@ -668,7 +671,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MoonSign/Pods-MoonSign-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-MoonSign/Pods-MoonSign-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
@@ -677,6 +680,7 @@
 				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/KYDrawerController/KYDrawerController.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -688,10 +692,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KYDrawerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MoonSign/Pods-MoonSign-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MoonSign/Pods-MoonSign-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -756,6 +761,7 @@
 				048B0380215A010E0013E52F /* GetHoroscopeRoot.swift in Sources */,
 				04C8AD3821452B4E00A3B5F6 /* AstrologersListViewController.swift in Sources */,
 				045390512141083C00869073 /* NavigationDrawerViewController.swift in Sources */,
+				0425328A21DF403000F06F71 /* WelcomeView3ViewController.swift in Sources */,
 				0475C3A32157531000751154 /* GetConversationRoot.swift in Sources */,
 				048B0392215A12ED0013E52F /* GetYogaMeta.swift in Sources */,
 				04DB41A12166129600A7A859 /* DateTimePickerViewController.swift in Sources */,
@@ -942,6 +948,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 96382DCY4Q;
 				INFOPLIST_FILE = MoonSign/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -962,6 +969,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 96382DCY4Q;
 				INFOPLIST_FILE = MoonSign/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

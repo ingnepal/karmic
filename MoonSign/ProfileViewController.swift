@@ -39,7 +39,7 @@ class ProfileViewController: UIViewController {
     
     var imageBasea64 : String?
     override func viewDidLoad() {
-        
+        Utility.ENABLE_IQKEYBOARD()
         self.registerButton.backgroundColor = ColorConstants.accentColor
         
         super.viewDidLoad()
@@ -94,7 +94,6 @@ class ProfileViewController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
-        Utility.ENABLE_IQKEYBOARD()
         
         self.profileImage.image = UIImage(named: "profiledefault")
         self.profileImage.isUserInteractionEnabled = true
@@ -109,8 +108,18 @@ class ProfileViewController: UIViewController {
        // getCustomerDetails()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        Utility.DISABLE_IQKEYBOARD()
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     fileprivate func updateUI(){
-        let profile = userDetails.getUserDetails()?[0]
+        let data = userDetails.getUserDetails()
+        var profile = data?[0]
+        if (data?.count)! >= 1{
+            profile = (data?[(data?.count)! - 1])!
+        }
         self.fullName.text = profile?.fullName
         if profile?.gender == "Male" {
             femaleCheckBox.image = UIImage(named: "ic_selected_no")
@@ -120,7 +129,11 @@ class ProfileViewController: UIViewController {
             femaleCheckBox.image = UIImage(named: "ic_selected_yes")
         }
         var dateTime = (profile?.dateOfBirth ?? "").components(separatedBy: "T")
-
+        if let url = profile?.photoUrl {
+            if let photoUrl = URL(string: url){
+                self.profileImage.af_setImage(withURL: photoUrl)
+            }
+        }
         self.dateOfBirth.text = dateTime[0]
         self.timeOfBirth.text = profile?.timeOfBirth
         if profile?.isTimeAccurate == true{
@@ -206,7 +219,11 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    override func viewDidDisappear(_ animated: Bool) {
+       // Utility.DISABLE_IQKEYBOARD()
+        Utility.ENABLE_IQKEYBOARD()
+
+    }
     
     @objc func timeOfBirthClicked(gesture: UITapGestureRecognizer){
         let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
@@ -345,7 +362,7 @@ class ProfileViewController: UIViewController {
     }
     
     func getCustomerDetails(){
-        let stringURL = HTTPConstants.baseURl + "api/customers/GetCustomer/" + SaveData.getCustomerID()
+        let stringURL = HTTPConstants.baseURl + "api/customers/GetCustomer/" + SaveData.getCustomerID()!
         HTTPRequests.HTTPGetRequestData(stringURL) { (response, statusFlag) in
             if statusFlag{
                 do{

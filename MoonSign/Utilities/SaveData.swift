@@ -33,10 +33,10 @@ class SaveData{
         UserDefaults.standard.set(flag, forKey: loggedIn)
     }
     
-    static func getCustomerID() -> String{
+    static func getCustomerID() -> String?{
         let id = UserDefaults.standard.string(forKey: customerID)
-        
-        return id!
+      
+        return id
     }
     
     static func setCustomerID(id: String){

@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'MoonSign' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -13,7 +13,8 @@ target 'MoonSign' do
   pod 'AlamofireImage', '~> 3.3'
   pod 'SVProgressHUD'
   pod 'IQKeyboardManagerSwift'
-  
+  pod 'SwiftSoup'
+
   target 'MoonSignTests' do
     inherit! :search_paths
     # Pods for testing

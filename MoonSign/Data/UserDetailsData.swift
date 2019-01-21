@@ -17,7 +17,7 @@ class UserDetailsData {
     public func saveUserData(cityAndState: String, country: String, dob: String,
                              fullName: String, gender: String, isTermsAgreed: Bool,
                              isTimeAccurate: Bool, photoUrl: String, timeOfBirth: String){
-        //deleteAllRecords()
+        deleteAllRecords()
         let context = appDelegate?.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Profile", in: context!)
         let conversation = NSManagedObject(entity: entity!, insertInto: context)
@@ -29,6 +29,8 @@ class UserDetailsData {
         conversation.setValue(isTimeAccurate, forKey: "isTimeAccurate")
         conversation.setValue(photoUrl, forKey: "photoUrl")
         conversation.setValue(timeOfBirth, forKey: "timeOfBirth")
+        conversation.setValue(gender, forKey: "gender")
+
         
 
         do {
