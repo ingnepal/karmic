@@ -15,6 +15,7 @@ import UserNotifications
 
 class MainViewController: UIViewController,UITextViewDelegate {
 
+    @IBOutlet weak var textHeight: NSLayoutConstraint!
     @IBOutlet weak var messageText: UITextView!
 //    @IBOutlet weak var titleBarView: UIView!
 //    @IBOutlet weak var profileImage: UIImageView!
@@ -23,17 +24,24 @@ class MainViewController: UIViewController,UITextViewDelegate {
 //    @IBOutlet weak var titleName: UILabel!
     @IBOutlet weak var messageBubble: UIButton!
     @IBOutlet weak var sendButton: UIButton!
-    
-    
+    var constraint: NSLayoutConstraint?
+    var constraintHeight: NSLayoutConstraint?
+
     var chatState : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
 //       SaveData.setFirstLogin(flag: true)
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillHide), name: NSNotification.Name(rawValue: "HideKeyboard"), object: nil)
-      
+        messageText.translatesAutoresizingMaskIntoConstraints = false
+        constraint = messageText.heightAnchor.constraint(lessThanOrEqualToConstant: 40)
+        constraint?.isActive = false
+        
+        constraintHeight = messageText.heightAnchor.constraint(equalToConstant: 70)
+        constraintHeight?.isActive = false
 
 //        self.titleBarView.layer.zPosition = .greatestFiniteMagnitude
 //        self.titleBarView.backgroundColor = ColorConstants.primaryColor
@@ -83,18 +91,33 @@ class MainViewController: UIViewController,UITextViewDelegate {
     
 
     @objc func keyboardWillShow(notification: NSNotification) {
-        let device = model
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
-                if device == "iPhone X"{
-                    self.view.frame.origin.y -= keyboardSize.height + 20
-                }else{
-                    self.view.frame.origin.y -= keyboardSize.height
-                }
+                self.view.frame.origin.y -= keyboardSize.height
             }
         }
     }
     
+    func textViewDidChange(_ textView: UITextView) {
+        print(textView.frame.height)
+        if textView.frame.height > 60 {
+            textView.isScrollEnabled = true
+            constraintHeight?.isActive = true
+        }else{
+            textView.isScrollEnabled = false
+            constraint?.isActive = true
+
+            constraintHeight?.isActive = false
+
+        }
+      //  textView.heightAnchor.constraint(equalToConstant: textView.frame.height).isActive = true
+        if textView.text.isEmpty {
+           constraint?.isActive = true
+        }else{
+            constraint?.isActive = false
+        }
+    }
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
