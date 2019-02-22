@@ -10,6 +10,7 @@ PODS:
   - KYDrawerController (2.0.4)
   - SVProgressHUD (2.2.5)
   - SwiftSoup (1.7.4)
+  - SwiftyStoreKit (0.14.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
@@ -20,18 +21,7 @@ DEPENDENCIES:
   - KYDrawerController
   - SVProgressHUD
   - SwiftSoup
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Alamofire
-    - AlamofireImage
-    - Cosmos
-    - IQKeyboardManagerSwift
-    - JSQMessagesViewController
-    - JSQSystemSoundPlayer
-    - KYDrawerController
-    - SVProgressHUD
-    - SwiftSoup
+  - SwiftyStoreKit
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -43,7 +33,8 @@ SPEC CHECKSUMS:
   KYDrawerController: cf5839877c442132123e9d482f458821026defdf
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftSoup: 92f5b348c131aed8af04f4326db1579ab19fa08c
+  SwiftyStoreKit: a5cdece4327f3943eb72fa81aebe3aa6684b5eab
 
-PODFILE CHECKSUM: 3b0ffe7d61f142f8c49bbcc7ce555dafb8a18ed2
+PODFILE CHECKSUM: ec15e01a53f069b4dd38d49e05cac45fef03584e
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.4.0

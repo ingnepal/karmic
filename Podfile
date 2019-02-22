@@ -14,6 +14,7 @@ target 'MoonSign' do
   pod 'SVProgressHUD'
   pod 'IQKeyboardManagerSwift'
   pod 'SwiftSoup'
+  pod 'SwiftyStoreKit'
 
   target 'MoonSignTests' do
     inherit! :search_paths
