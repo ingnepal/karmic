@@ -100,22 +100,24 @@ class MainViewController: UIViewController,UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        print(textView.frame.height)
-        if textView.frame.height > 60 {
-            textView.isScrollEnabled = true
-            constraintHeight?.isActive = true
-        }else{
-            textView.isScrollEnabled = false
-            constraint?.isActive = true
-
-            constraintHeight?.isActive = false
-
-        }
+       
       //  textView.heightAnchor.constraint(equalToConstant: textView.frame.height).isActive = true
         if textView.text.isEmpty {
-           constraint?.isActive = true
+            constraintHeight?.isActive = false
+            constraint?.isActive = true
         }else{
-            constraint?.isActive = false
+            if textView.frame.height > 60 {
+                textView.isScrollEnabled = true
+                constraintHeight?.isActive = true
+            }else{
+                textHeight.isActive = true
+                textView.isScrollEnabled = false
+                constraint?.isActive = false
+                
+                constraintHeight?.isActive = false
+                
+            }
+//            constraint?.isActive = false
         }
     }
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -137,7 +139,6 @@ class MainViewController: UIViewController,UITextViewDelegate {
         else{
             if chatState == 0 {
                 print("...........isLoggedIn............")
-                print(SaveData.getCustomerID())
                 let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
                 let controller = storyboard.instantiateViewController(withIdentifier: "ChatViewController")
                 addChildViewController(controller)
@@ -204,6 +205,20 @@ class MainViewController: UIViewController,UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     @objc func setTemplate(notification: NSNotification){
+        messageText.resignFirstResponder()
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+        if messageText.frame.height > 60 {
+            messageText.isScrollEnabled = true
+            constraintHeight?.isActive = true
+        }else{
+            messageText.isScrollEnabled = false
+            constraint?.isActive = false
+            
+            constraintHeight?.isActive = false
+            
+        }
         self.messageText.text = notification.object as! String
     }
     
