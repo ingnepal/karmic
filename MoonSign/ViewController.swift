@@ -98,7 +98,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
          finishSendingMessage()
-        self.sendQuestions(text: text)
+//        self.sendQuestions(text: text)
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
@@ -389,17 +389,20 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
     
     @objc func sendMessageNotification(notification: NSNotification){
         finishSendingMessage()
-        
+        Utility.ShowSVProgressHUD_Black_With_IgnoringInteraction()
         SwiftyStoreKit.purchaseProduct("net.blackspring.moonshine.question", quantity: 1, atomically: false) { result in
             switch result {
             case .success(let product):
                 // fetch content from your server, then:
-                self.sendQuestions(text: notification.object as! String)
-
-                if product.needsFinishTransaction {
+                self.sendQuestions(text: notification.object as! String, onFinish:({ success in
+                    Utility.DismissSVProgressHUD_With_endIgnoringInteraction()
+                    
+                    if product.needsFinishTransaction {
                     SwiftyStoreKit.finishTransaction(product.transaction)
-                }
-                print("Purchase Success: \(product.productId)")
+                    }
+                    print("Purchase Success: \(product.productId)")
+                }))
+                
             case .error(let error):
                 switch error.code {
                 case .unknown: print("Unknown error. Please contact support")
@@ -572,7 +575,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
          self.scrollToBottom(animated: true)
     }
     
-    func sendQuestions(text: String){
+    func sendQuestions(text: String, onFinish:@escaping (Bool)->()){
         let stringURL : String = HTTPConstants.baseURl + "api/question/CreateQuestion"
         let parameters = [
             "Questions": text as AnyObject,
@@ -583,6 +586,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         HTTPRequests.HTTPPostRequest(stringURL, parameters: parameters, withSuccess: ({ (responce, statusFlag) in
             if statusFlag{
                 self.fetchChats()
+                onFinish(true)
 //                self.messages.append(JSQMessage(senderId: SaveData.getCustomerID(), displayName: "Test", text: text))
 //                self.collectionView.reloadData()
             }

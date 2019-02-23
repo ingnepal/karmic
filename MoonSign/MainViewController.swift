@@ -100,7 +100,7 @@ class MainViewController: UIViewController,UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-       
+        textHeight.isActive = true
       //  textView.heightAnchor.constraint(equalToConstant: textView.frame.height).isActive = true
         if textView.text.isEmpty {
             constraintHeight?.isActive = false
