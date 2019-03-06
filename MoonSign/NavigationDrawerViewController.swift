@@ -9,7 +9,7 @@
 import UIKit
 
 class NavigationDrawerViewController: UIViewController {
-    let titles = ["Our Astrologers","Your Horoscope","How MoonSign works","Yoga","Thought of the day", "Customer Support","Terms and Conditions", "Privacy Policy"]
+    let titles = ["Our Astrologers","Your Horoscope","How MoonSign works","Yoga","Thought of the day", "Customer Support", "Privacy Policy"]
 //    let titleImages = [#imageLiteral(resourceName: "thought"),#imageLiteral(resourceName: "astrologers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "settings")]
     let titleImages = [UIImage(named: "astrologers"),UIImage(named: "sun"),UIImage(named: "settings"),UIImage(named: "meditate"),UIImage(named: "thought"),UIImage(named: "ic_customer_support"),UIImage(named: "ic_terms"),UIImage(named: "settings")]
     @IBOutlet weak var mainTableView: UITableView!
@@ -55,7 +55,7 @@ class NavigationDrawerViewController: UIViewController {
     }
     
     @objc func vertexViewTapped(gesture: UITapGestureRecognizer){
-        guard let url = URL(string: "http://www.blackspring.net") else {
+        guard let url = URL(string: "https://www.vertexwebsurf.com.np") else {
             return //be safe
         }
         
@@ -66,7 +66,7 @@ class NavigationDrawerViewController: UIViewController {
         }
     }
     @objc func blackspringViewTapped(gesture: UITapGestureRecognizer){
-        guard let url = URL(string: "http://www.blackspring.net") else {
+        guard let url = URL(string: "https://blackspring.com.np") else {
             return //be safe
         }
         
