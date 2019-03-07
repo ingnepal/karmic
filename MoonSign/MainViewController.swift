@@ -271,15 +271,15 @@ class MainViewController: UIViewController,UITextViewDelegate {
                 UIApplication.shared.openURL(myURL)
             }
             break
-        case 7:
-            let myURL = URL(string: "https://app.moonsign.org/MoonSignPolicy/TermsAndCondition.html")!
-            // if openBrowser {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(myURL, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(myURL)
-            }
-            break
+//        case 7:
+//            let myURL = URL(string: "https://app.moonsign.org/MoonSignPolicy/TermsAndCondition.html")!
+//            // if openBrowser {
+//            if #available(iOS 10.0, *) {
+//                UIApplication.shared.open(myURL, options: [:], completionHandler: nil)
+//            } else {
+//                UIApplication.shared.openURL(myURL)
+//            }
+//            break
         default:
             break
         }
