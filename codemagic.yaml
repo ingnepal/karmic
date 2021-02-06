@@ -7,7 +7,7 @@ workflows:
         environment:
             vars:
                 XCODE_WORKSPACE: "MoonSign.xcodeproj"
-                XCODE_SCHEME: "MoonSign.xcscheme"
+                XCODE_SCHEME: "MoonSign.xcworkspace"
             xcode: latest
             cocoapods: default
         scripts:
