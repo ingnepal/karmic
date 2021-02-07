@@ -231,7 +231,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
         print(indexPath.row)
         let message = self.conversations[indexPath.row]
         if message["qa"] == "a"{
-          var  id = message["id"] ?? "1"
+            let id = message["id"] ?? "1"
             let alert = UIAlertController(title: "Rate Now", message: "Please select your rating star", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "★☆☆☆☆", style: .default, handler: { _ in
                 self.rateMessage(id: id, rating: "1")
@@ -390,7 +390,7 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
     @objc func sendMessageNotification(notification: NSNotification){
         finishSendingMessage()
         Utility.ShowSVProgressHUD_Black_With_IgnoringInteraction()
-        SwiftyStoreKit.purchaseProduct("net.blackspring.moonshine.question", quantity: 1, atomically: false) { result in
+        SwiftyStoreKit.purchaseProduct("net.blackspring.moonsign.question", quantity: 1, atomically: false) { result in
             switch result {
             case .success(let product):
                 // fetch content from your server, then:
@@ -398,13 +398,16 @@ class ViewController: JSQMessagesViewController,GetTemplateText,UIGestureRecogni
                     Utility.DismissSVProgressHUD_With_endIgnoringInteraction()
                     
                     if product.needsFinishTransaction {
-                    SwiftyStoreKit.finishTransaction(product.transaction)
+                        SwiftyStoreKit.finishTransaction(product.transaction)
                     }
                     print("Purchase Success: \(product.productId)")
                 }))
                 
             case .error(let error):
+                Utility.DismissSVProgressHUD_With_endIgnoringInteraction()
+
                 switch error.code {
+
                 case .unknown: print("Unknown error. Please contact support")
                 case .clientInvalid: print("Not allowed to make the payment")
                 case .paymentCancelled: break

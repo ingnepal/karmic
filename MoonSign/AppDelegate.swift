@@ -148,8 +148,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func registerForRichNotifications() {
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { (granted:Bool, error:Error?) in
-            if error != nil {
-                print(error?.localizedDescription)
+            if let error = error {
+                print(error.localizedDescription)
             }
             if granted {
                 print("Permission granted")

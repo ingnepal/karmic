@@ -78,7 +78,7 @@ extension YogaViewController: UITableViewDelegate,UITableViewDataSource{
         let datas = self.yogaDetails[indexPath.row]
         
         
-        var finalURL = datas["imageURL"]?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let finalURL = datas["imageURL"]?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         let imgURL = URL(string: finalURL!)
         cell.titleImage.af_setImage(withURL: imgURL!)
         cell.titleText.text = datas["title"]

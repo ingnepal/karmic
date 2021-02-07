@@ -38,7 +38,7 @@ class CustomerSupportViewController: UIViewController {
     
     @IBAction func emailUsClicked(_ sender: UIButton) {
         
-        let email = "moonsign@gmail.com"
+        let email = "moonsignvedic@gmail.com"
         if let url = URL(string: "mailto:\(email)") {
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url)

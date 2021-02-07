@@ -155,19 +155,6 @@ class MainViewController: UIViewController,UITextViewDelegate {
         Utility.DISABLE_IQKEYBOARD()
         Utility.DISABLE_IQKEYBOARD_AUTO_TOOLBAR()
 
-    //    Utility.ENABLE_IQKEYBOARD_AUTO_TOOLBAR()
-
-        
-//        let menuTapGesture = UITapGestureRecognizer(target: self, action: #selector(menuClicked(gesture:)))
-//        self.menuImage.isUserInteractionEnabled = true
-//        self.menuImage.addGestureRecognizer(menuTapGesture)
-//
-//        let profileTapGesture = UITapGestureRecognizer(target: self, action: #selector(profileClicked(gesture:)))
-//        self.profileImage.isUserInteractionEnabled = true
-//        self.profileImage.addGestureRecognizer(profileTapGesture)
-        
-        
-        
         
     }
     override func viewDidDisappear(_ animated: Bool) {
@@ -219,7 +206,7 @@ class MainViewController: UIViewController,UITextViewDelegate {
             constraintHeight?.isActive = false
             
         }
-        self.messageText.text = notification.object as! String
+        self.messageText.text = notification.object as? String
     }
     
     
@@ -271,15 +258,15 @@ class MainViewController: UIViewController,UITextViewDelegate {
                 UIApplication.shared.openURL(myURL)
             }
             break
-//        case 7:
-//            let myURL = URL(string: "https://app.moonsign.org/MoonSignPolicy/TermsAndCondition.html")!
-//            // if openBrowser {
-//            if #available(iOS 10.0, *) {
-//                UIApplication.shared.open(myURL, options: [:], completionHandler: nil)
-//            } else {
-//                UIApplication.shared.openURL(myURL)
-//            }
-//            break
+        case 7:
+            let myURL = URL(string: "https://app.moonsign.org/MoonSignPolicy/TermsAndCondition.html")!
+            // if openBrowser {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(myURL, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(myURL)
+            }
+            break
         default:
             break
         }
@@ -354,7 +341,8 @@ class MainViewController: UIViewController,UITextViewDelegate {
             self.present(ac, animated: true)
         }
         else{
-             NotificationCenter.default.post(name: .messageSendNotification, object: self.messageText.text)
+            messageText.resignFirstResponder()
+            NotificationCenter.default.post(name: .messageSendNotification, object: self.messageText.text)
             self.messageText.text = ""
         }
     }

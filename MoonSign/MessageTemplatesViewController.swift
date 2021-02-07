@@ -58,7 +58,7 @@ class MessageTemplatesViewController: UIViewController,UITableViewDelegate,UITab
         self.view.backgroundColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:0.2)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        var touch: UITouch? = touches.first
+        let touch: UITouch? = touches.first
         if touch?.view != mainView {
             self.dismiss(animated: true, completion: nil)
         }

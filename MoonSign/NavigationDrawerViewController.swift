@@ -9,9 +9,9 @@
 import UIKit
 
 class NavigationDrawerViewController: UIViewController {
-    let titles = ["Our Astrologers","Your Horoscope","How MoonSign works","Yoga","Thought of the day", "Customer Support", "Privacy Policy"]
-//    let titleImages = [#imageLiteral(resourceName: "thought"),#imageLiteral(resourceName: "astrologers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "settings")]
-    let titleImages = [UIImage(named: "astrologers"),UIImage(named: "sun"),UIImage(named: "settings"),UIImage(named: "meditate"),UIImage(named: "thought"),UIImage(named: "ic_customer_support"),UIImage(named: "ic_terms")]
+    let titles = ["Our Astrologers","Your Horoscope","How MoonSign works","Yoga","Thought of the day", "Customer Support","Privacy Policy", "Terms and Conditions"]
+    //    let titleImages = [#imageLiteral(resourceName: "thought"),#imageLiteral(resourceName: "astrologers"),#imageLiteral(resourceName: "support"),#imageLiteral(resourceName: "settings")]
+    let titleImages = [UIImage(named: "astrologers"),UIImage(named: "sun"),UIImage(named: "settings"),UIImage(named: "meditate"),UIImage(named: "thought"),UIImage(named: "ic_customer_support"),UIImage(named: "ic_terms"),UIImage(named: "ic_terms")]
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var questionPriceText: UILabel!
     @IBOutlet weak var questionPrice: UILabel!
